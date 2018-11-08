@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import static Controller.accessFrame.createEjecution;
+import static Controller.accessFrame.createInicio;
 import java.awt.Toolkit;
 
 /**
@@ -135,6 +137,11 @@ public class TablaComparativa extends javax.swing.JFrame {
         jMenu2.setText("Ir");
 
         jMenuItem1.setText("Inicio");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem1);
 
         jMenuItem2.setText("Ejecución de referencias");
@@ -244,8 +251,16 @@ public class TablaComparativa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
+        
+        createEjecution();
+        
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        
+        createInicio();
+        
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
