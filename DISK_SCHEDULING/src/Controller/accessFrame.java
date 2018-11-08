@@ -19,6 +19,7 @@ public class accessFrame {
         
         Ejecución ventCreateEjecution = new Ejecución();
         ventCreateEjecution.setVisible(true);
+       
         
     }
      
