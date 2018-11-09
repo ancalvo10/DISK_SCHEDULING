@@ -58,7 +58,7 @@ public class Control {
     
     public void randomList(){
         Collections.shuffle(randomTracks);
-    }
+    }//No se usó
 
     public static int getCabezalInicial() {
         return cabezalInicial;
