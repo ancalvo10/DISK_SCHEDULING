@@ -7,6 +7,7 @@ package GUI;
 
 import static Controller.accessFrame.createEjecution;
 import static Controller.accessFrame.createInicio;
+import UTIL.Control;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
@@ -300,6 +301,7 @@ public class TablaComparativa extends javax.swing.JFrame {
         
         GraficoMultiline ventanaGraficoMulti = new GraficoMultiline();
         ventanaGraficoMulti.setVisible(true);
+        Control.leerArchivo();
     }//GEN-LAST:event_btnCorrerActionPerformed
 
     private void menAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menAyudaActionPerformed

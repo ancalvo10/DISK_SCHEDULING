@@ -92,7 +92,6 @@ private XYDataset createDataset() {    // this method creates the data as time s
     XYSeries series9 = new XYSeries("SSTF");
     
     int tiempo = 0;
-        
         Integer[] arrayCSCAN = Control.sstfTracks.toArray(new Integer[Control.sstfTracks.size()]);
         Integer[] arrayFIFO = Control.fifoTracks.toArray(new Integer[Control.fifoTracks.size()]);
         Integer[] arrayLIFO = Control.lifoTracks.toArray(new Integer[Control.lifoTracks.size()]);
@@ -261,6 +260,7 @@ private void customizeChart(JFreeChart chart) {   // here we make some customiza
          
                
         Control.leerArchivo();
+        
         CSCAN cscan = new CSCAN();
         cscan.start();
         
@@ -295,6 +295,8 @@ private void customizeChart(JFreeChart chart) {   // here we make some customiza
         Control.setCabezalActual(Control.getCabezalInicial());
         SSTF sstf = new SSTF();
         sstf.start();
+        
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

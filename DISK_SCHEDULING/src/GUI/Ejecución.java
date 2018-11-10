@@ -280,46 +280,55 @@ public class Ejecución extends javax.swing.JFrame {
         String algoritmo = (String) cboxAlgorithm.getSelectedItem(); 
         if (null != algoritmo)switch (algoritmo) {
             case "C-SCAN":
+                Control.setCabezalActual(Control.getCabezalActual());
                 CSCAN cscan = new CSCAN();
                 cscan.start();
                 fillAverageCSCAN();
                 break;
             case "FSCAN":
+                Control.setCabezalActual(Control.getCabezalActual());
                 FSCAN fscan = new FSCAN();
                 fscan.start();
                 fillAverageFSCAN();
                 break;
             case "N-SCAN":
+                Control.setCabezalActual(Control.getCabezalActual());
                 NSCAN nscan = new NSCAN();
                 nscan.start();
                 fillAverageNSCAN();
                 break;
             case "PRIORIDAD":
+                Control.setCabezalActual(Control.getCabezalActual());
                 PRIORIDAD prioridad = new PRIORIDAD();
                 prioridad.start();
                 fillAveragePRIORIDAD();
                 break;    
             case "SSTF":
+                Control.setCabezalActual(Control.getCabezalActual());
                 SSTF sstf = new SSTF();
                 sstf.start();
                 fillAverageSSTF();
                 break;
             case "SCAN":
+                Control.setCabezalActual(Control.getCabezalActual());
                 SCAN scan = new SCAN();
                 scan.start();
                 fillAverageSCAN();
                 break;
             case "RANDOM":
+                Control.setCabezalActual(Control.getCabezalActual());
                 RANDOM random = new RANDOM();
                 random.start();
                 fillAverageRANDOM();
                 break;
             case "LIFO":
+                Control.setCabezalActual(Control.getCabezalActual());
                 LIFO lifo = new LIFO();
                 lifo.start();
                 fillAverageLIFO();
                 break;
             case "FIFO":
+                Control.setCabezalActual(Control.getCabezalActual());
                 FIFO fifo = new FIFO();
                 fifo.start();
                 fillAverageFIFO();
