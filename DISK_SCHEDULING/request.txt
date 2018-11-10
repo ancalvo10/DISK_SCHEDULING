@@ -2,5 +2,4 @@
 #defineprocess p1 1
 #defineprocess p2 4
 #cabezalInicial 90
-
-p0 20 , p1 30 , p0 50 , p1 35 , p2 98 , p0 110 , p1 123 , p2 15 , p2 14
+#tracks p0 20 , p1 30 , p0 50 , p1 35 , p2 98 , p0 110 , p1 123 , p2 15 , p2 14
