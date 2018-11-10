@@ -120,9 +120,7 @@ public class Grafico extends javax.swing.JFrame {
             series.add(tiempo, array1);
             tiempo = tiempo + 5;
         }
-        
-
-
+       
         XYSeriesCollection dataset = new XYSeriesCollection();
         dataset.addSeries(series);
 
@@ -145,11 +143,16 @@ public class Grafico extends javax.swing.JFrame {
 
         XYPlot plot = chart.getXYPlot();
 
+        
+    
         XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
         renderer.setSeriesPaint(0, Color.RED);
         renderer.setSeriesStroke(0, new BasicStroke(2.0f));
         
-        
+        // sets paint color for plot outlines
+        plot.setOutlinePaint(Color.BLACK);
+        plot.setOutlineStroke(new BasicStroke(2.0f));
+
 
         plot.setRenderer(renderer);
         plot.setBackgroundPaint(Color.white);
