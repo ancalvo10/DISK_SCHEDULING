@@ -102,6 +102,8 @@ public class TablaComparativa extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Consolas", 3, 14)); // NOI18N
         jLabel2.setText("TABLAS COMPARATIVAS");
 
+        jLabel3.setBackground(new java.awt.Color(0, 51, 204));
+        jLabel3.setFont(new java.awt.Font("Consolas", 2, 11)); // NOI18N
         jLabel3.setText("Next track accessed");
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
@@ -130,8 +132,10 @@ public class TablaComparativa extends javax.swing.JFrame {
         ));
         jScrollPane4.setViewportView(jTable4);
 
+        jLabel4.setFont(new java.awt.Font("Consolas", 2, 11)); // NOI18N
         jLabel4.setText("Number of tracks traversed");
 
+        jLabel5.setFont(new java.awt.Font("Consolas", 2, 11)); // NOI18N
         jLabel5.setText("Average seek length");
 
         btnCorrer.setText("Correr");
@@ -229,10 +233,12 @@ public class TablaComparativa extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addComponent(lblAlgoritmoP)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
                         .addComponent(jLabel3)
-                        .addGap(28, 28, 28)
+                        .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24)
                         .addComponent(jLabel4)
@@ -243,8 +249,7 @@ public class TablaComparativa extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel5))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(17, 17, 17)
+                        .addGap(37, 37, 37)
                         .addComponent(checkbox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(checkbox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -269,7 +274,7 @@ public class TablaComparativa extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addComponent(btnCorrer)))
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         pack();
