@@ -161,6 +161,7 @@ public class TablaComparativa extends javax.swing.JFrame {
 
         jMenu2.setText("Ir");
 
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setText("Inicio");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,6 +170,7 @@ public class TablaComparativa extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem1);
 
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem2.setText("Ejecución de referencias");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -291,7 +293,6 @@ public class TablaComparativa extends javax.swing.JFrame {
     }//GEN-LAST:event_menFileActionPerformed
 
     private void btnCorrerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCorrerActionPerformed
-        // TODO add your handling code here:
         
         GraficoMultiline ventanaGraficoMulti = new GraficoMultiline();
         ventanaGraficoMulti.setVisible(true);
@@ -299,12 +300,14 @@ public class TablaComparativa extends javax.swing.JFrame {
 
     private void menAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menAyudaActionPerformed
         // TODO add your handling code here:
-        String ms = "En esta sección podrá ejecutar varios algoritmos de scheduling del disco para compararlos  \n"
-                + "Para poder ejecutar los algoritmos, primero debe seleccionar las opciones y posterior a esto\n"
-                + "deberá dar click en el botón Correr, esto procesará los algoritmos seleccionados y mostrará\n"
-                + "la gráficas correspondientes a la comparación de los algoritmos, de igual forma desplegará\n"
-                + "en la tabla el orden en que se accesaron las pistas del disco y el número de pistas atravesadas,\n" 
-                + "además se mostrarán los promedios de búsqueda";
+        String ms = "En esta sección podrá ejecutar varios algoritmos de scheduling del disco para compararlos.\n"
+                + "Para poder ejecutar los algoritmos debe: \n "
+                + "         1.Seleccionar las opciones y posterior a esto\n"
+                + "          2.Dar click en el botón Correr \n" 
+                + "Esto procesará los algoritmos seleccionados y mostrará la gráficas correspondientes a la \n"
+                + "comparación de los algoritmos, de igual forma desplegará en la tabla el orden en que se\n"
+                + "accesaron las pistas del disco y el número de pistas atravesadas, además se mostrarán\n" 
+                + "los promedios de búsqueda.";
             JOptionPane.showMessageDialog(null, ms);
     }//GEN-LAST:event_menAyudaActionPerformed
 

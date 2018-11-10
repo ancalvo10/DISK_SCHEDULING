@@ -5,11 +5,22 @@
  */
 package GUI;
 
+import SCHEDULING.CSCAN;
+import SCHEDULING.FIFO;
+import SCHEDULING.FSCAN;
+import SCHEDULING.LIFO;
+import SCHEDULING.NSCAN;
+import SCHEDULING.PRIORIDAD;
+import SCHEDULING.RANDOM;
+import SCHEDULING.SCAN;
+import SCHEDULING.SSTF;
+import UTIL.Control;
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
+import java.util.LinkedList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import org.jfree.chart.ChartFactory;
@@ -70,33 +81,85 @@ public class GraficoMultiline extends javax.swing.JFrame {
 
 private XYDataset createDataset() {    // this method creates the data as time seris 
     XYSeriesCollection dataset = new XYSeriesCollection();
-    XYSeries series1 = new XYSeries("SSTF");
-    XYSeries series2 = new XYSeries("SCAN");
-    XYSeries series3 = new XYSeries("FIFO");
+    XYSeries series1 = new XYSeries("C-SCAN");
+    XYSeries series2 = new XYSeries("FIFO");
+    XYSeries series3 = new XYSeries("LIFO");
+    XYSeries series4 = new XYSeries("F-SCAN");
+    XYSeries series5 = new XYSeries("N-SCAN");
+    XYSeries series6 = new XYSeries("PRIORIDAD");
+    XYSeries series7 = new XYSeries("RANDOM");
+    XYSeries series8 = new XYSeries("SCAN");
+    XYSeries series9 = new XYSeries("SSTF");
     
-    series1.add(1.0, 2.0);
-    series1.add(2.0, 3.0);
-    series1.add(3.0, 2.5);
-    series1.add(3.5, 2.8);
-    series1.add(4.2, 6.0);
+    int tiempo = 0;
+        
+        Integer[] arrayCSCAN = Control.sstfTracks.toArray(new Integer[Control.sstfTracks.size()]);
+        Integer[] arrayFIFO = Control.fifoTracks.toArray(new Integer[Control.fifoTracks.size()]);
+        Integer[] arrayLIFO = Control.lifoTracks.toArray(new Integer[Control.lifoTracks.size()]);
+        Integer[] arrayFSCAN = Control.fscanTracks.toArray(new Integer[Control.fscanTracks.size()]);
+        Integer[] arrayNSCAN = Control.nscanTracks.toArray(new Integer[Control.nscanTracks.size()]);
+        Integer[] arrayPRI = Control.prioridadTracksEstadisticas.toArray(new Integer[Control.prioridadTracksEstadisticas.size()]);
+        Integer[] arrayRAM = Control.randomTracks.toArray(new Integer[Control.randomTracks.size()]);
+        Integer[] arraySCAN = Control.scanTracks.toArray(new Integer[Control.scanTracks.size()]);
+        Integer[] arraySSTF = Control.sstfTracks.toArray(new Integer[Control.sstfTracks.size()]);
+
+        for (Integer array1 : arrayCSCAN) {
+            series1.add(tiempo, array1);
+            tiempo = tiempo + 5;
+        }
+        
+        for (Integer array2 : arrayFIFO) {
+            series2.add(tiempo, array2);
+            tiempo = tiempo + 5;
+        }
+        
+        for (Integer array3 : arrayLIFO) {
+            series3.add(tiempo, array3);
+            tiempo = tiempo + 5;
+        }
+        
+        for (Integer array4 : arrayFSCAN) {
+            series4.add(tiempo, array4);
+            tiempo = tiempo + 5;
+        }
+        
+        for (Integer array5 : arrayNSCAN) {
+            series5.add(tiempo, array5);
+            tiempo = tiempo + 5;
+        }
+        
+        for (Integer array6 : arrayPRI) {
+            series6.add(tiempo, array6);
+            tiempo = tiempo + 5;
+        }
+        
+        for (Integer array7 : arrayRAM) {
+            series7.add(tiempo, array7);
+            tiempo = tiempo + 5;
+        }
+        
+        for (Integer array8 : arraySCAN) {
+            series8.add(tiempo, array8);
+            tiempo = tiempo + 5;
+        }
+        
+        for (Integer array9 : arraySSTF) {
+            series9.add(tiempo, array9);
+            tiempo = tiempo + 5;
+        }
+      
+        dataset.addSeries(series1);
+        dataset.addSeries(series2);
+        dataset.addSeries(series3);
+        dataset.addSeries(series4);
+        dataset.addSeries(series5);
+        dataset.addSeries(series6);
+        dataset.addSeries(series7);
+        dataset.addSeries(series8);
+        dataset.addSeries(series9);
+
+        return dataset;
     
-    series2.add(2.0, 1.0);
-    series2.add(2.5, 2.4);
-    series2.add(3.2, 1.2);
-    series2.add(3.9, 2.8);
-    series2.add(4.6, 3.0);
-    
-    series3.add(1.2, 4.0);
-    series3.add(2.5, 4.4);
-    series3.add(3.8, 4.2);
-    series3.add(4.3, 3.8);
-    series3.add(4.5, 4.0);
-    
-    dataset.addSeries(series1);
-    dataset.addSeries(series2);
-    dataset.addSeries(series3);
-    
-    return dataset;
 }
 
 private void customizeChart(JFreeChart chart) {   // here we make some customization
@@ -107,11 +170,23 @@ private void customizeChart(JFreeChart chart) {   // here we make some customiza
     renderer.setSeriesPaint(0, Color.RED);
     renderer.setSeriesPaint(1, Color.GREEN);
     renderer.setSeriesPaint(2, Color.YELLOW);
+    renderer.setSeriesPaint(3, Color.ORANGE);
+    renderer.setSeriesPaint(4, Color.PINK);
+    renderer.setSeriesPaint(5, Color.MAGENTA);
+    renderer.setSeriesPaint(6, Color.BLUE);
+    renderer.setSeriesPaint(7, Color.CYAN);
+    renderer.setSeriesPaint(8, Color.GRAY);
 
     // sets thickness for series (using strokes)
-    renderer.setSeriesStroke(0, new BasicStroke(4.0f));
-    renderer.setSeriesStroke(1, new BasicStroke(3.0f));
+    renderer.setSeriesStroke(0, new BasicStroke(2.0f));
+    renderer.setSeriesStroke(1, new BasicStroke(2.0f));
     renderer.setSeriesStroke(2, new BasicStroke(2.0f));
+    renderer.setSeriesStroke(3, new BasicStroke(2.0f));
+    renderer.setSeriesStroke(4, new BasicStroke(2.0f));
+    renderer.setSeriesStroke(5, new BasicStroke(2.0f));
+    renderer.setSeriesStroke(6, new BasicStroke(2.0f));
+    renderer.setSeriesStroke(7, new BasicStroke(2.0f));
+    renderer.setSeriesStroke(8, new BasicStroke(2.0f));
     
     // sets paint color for plot outlines
     plot.setOutlinePaint(Color.BLACK);
@@ -183,7 +258,43 @@ private void customizeChart(JFreeChart chart) {   // here we make some customiza
             java.util.logging.Logger.getLogger(GraficoMultiline.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+         
+               
+        
+        CSCAN cscan = new CSCAN();
+        cscan.start();
+        
+        Control.setCabezalActual(Control.getCabezalInicial());
+        FIFO fifo = new FIFO();
+        fifo.start();
+        
+        Control.setCabezalActual(Control.getCabezalInicial());
+        FSCAN fscan = new FSCAN();
+        fscan.start();
+        
+        Control.setCabezalActual(Control.getCabezalInicial());
+        LIFO lifo = new LIFO();
+        lifo.start();
+        
+        Control.setCabezalActual(Control.getCabezalInicial());
+        NSCAN nscan = new NSCAN();
+        nscan.start();
+        
+        Control.setCabezalActual(Control.getCabezalInicial());
+        PRIORIDAD prioridad = new PRIORIDAD();
+        prioridad.start();
+        
+        Control.setCabezalActual(Control.getCabezalInicial());
+        RANDOM random = new RANDOM();
+        random.start();
+        
+        Control.setCabezalActual(Control.getCabezalInicial());
+        SCAN scan = new SCAN();
+        scan.start();
+        
+        Control.setCabezalActual(Control.getCabezalInicial());
+        SSTF sstf = new SSTF();
+        sstf.start();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
