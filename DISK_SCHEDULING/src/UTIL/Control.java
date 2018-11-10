@@ -96,28 +96,57 @@ public class Control {
         Control.procesos.add(proceso);
     }
     
+    public static int findPrioridad(String proceso){
+        int cont = 0;
+        while(cont < Control.procesos.size()){
+            if(Control.procesos.get(cont).getNombre().equals(proceso)){
+                break;
+            }
+            cont++;
+        }
+        return Control.procesos.get(cont).getPrioridad();
+    }
+    
     public static void leerArchivo(){
         try { 
             File text = new File("request.txt");
             System.out.println(text.getAbsolutePath());
             Scanner sc = new Scanner(text);
-            while (sc.hasNext()) {
+            while (sc.hasNext("#defineprocess")) {
                 if(sc.next().equals("#defineprocess")){
                     Control.procesos.add(new Proceso(sc.next(), sc.nextInt()));
                 }
                 System.out.println(Control.procesos.getLast().getNombre());
                        System.out.println(Control.procesos.getLast().getPrioridad());
-                if(sc.next().equals("#cabezalInicial"))
-                    Control.setCabezalInicial(sc.nextInt());
+                //if(sc.next().equals("#cabezalInicial"))
+                
                 System.out.println(Control.procesos.toString());
                 //String str = sc.next();
                 //System.out.println(str);
             }
-            System.out.println(Control.getCabezalActual());
+            while (sc.hasNext("#cabezalInicial")) {
+                if(sc.next().equals("#cabezalInicial")){
+                    Control.setCabezalInicial(sc.nextInt());
+                    System.out.println(Control.getCabezalActual());
+                }
+            }
+            sc.next("#tracks");
+            while (sc.hasNext()) {
+                String proceso = sc.next();
+                int prioridad = findPrioridad(proceso);
+                int track = sc.nextInt();
+                Control.originalPrioTracks.add(new Prioridad(prioridad, track));
+                Control.originalTracks.add(track);
+                if(sc.hasNext())
+                    sc.next(",");
+            }
+            System.out.println(Control.originalTracks);
+            System.out.println(Control.originalPrioTracks);            
+            
         }
         
         catch(Exception e){
-            System.err.println("No se pudo abrir el archivo \n"+e);   
+            System.err.println("No se pudo leer correctamente el archivo \n"+e);   
         }
     }
     
