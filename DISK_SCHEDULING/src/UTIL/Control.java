@@ -18,6 +18,9 @@ public class Control {
     private static int cabezalActual;
     private static int pistasTotales;
     public static LinkedList<Integer> originalTracks = new LinkedList<Integer>();
+    public static LinkedList<Prioridad> originalPrioTracks = new LinkedList<Prioridad>();
+    
+    public static LinkedList<Proceso> procesos = new LinkedList<Proceso>();
     
     public static LinkedList<Integer> sstfTracks = new LinkedList<Integer>();
     public static LinkedList<Integer> sstfDistancias = new LinkedList<Integer>();
@@ -36,6 +39,7 @@ public class Control {
     public static int randomDistancia = 0;
     public static int randomPromedio = 0;
     public static LinkedList<Prioridad> prioridadTracks = new LinkedList<Prioridad>();
+    public static LinkedList<Integer> prioridadTracksEstadisticas = new LinkedList<Integer>();
     public static LinkedList<Integer> prioridadDistancias = new LinkedList<Integer>();
     public static int prioridadDistancia = 0;
     public static int prioridadPromedio = 0;
@@ -85,12 +89,9 @@ public class Control {
         Control.pistasTotales = pistasTotales;
     }
     
-    
-    
-    
-    
-    
-    
-    
+    public static void addProceso(String nombre, int prioridad){
+        Proceso proceso = new Proceso(nombre, prioridad);
+        Control.procesos.add(proceso);
+    }
     
 }
