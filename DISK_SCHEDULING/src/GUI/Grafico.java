@@ -107,7 +107,7 @@ public class Grafico extends javax.swing.JFrame {
         pack();
         setTitle("Disk scheduling");
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
    
     private XYDataset createDataset() {

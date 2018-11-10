@@ -82,7 +82,7 @@ public class Ejecución extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         menAyuda = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        menCompa = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -135,13 +135,13 @@ public class Ejecución extends javax.swing.JFrame {
 
         jMenu2.setText("Ir");
 
-        jMenuItem1.setText("Inicio");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        menCompa.setText("Inicio");
+        menCompa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                menCompaActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem1);
+        jMenu2.add(menCompa);
 
         jMenuItem2.setText("Comparar algoritmos");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -264,15 +264,15 @@ public class Ejecución extends javax.swing.JFrame {
     }//GEN-LAST:event_txtAverageActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        
+        dispose();
         createTablaComparativa();
         
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        
+    private void menCompaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menCompaActionPerformed
+        dispose();
         createInicio();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_menCompaActionPerformed
 
     private void cboxAlgorithmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxAlgorithmActionPerformed
         // TODO add your handling code here:
@@ -281,10 +281,11 @@ public class Ejecución extends javax.swing.JFrame {
     private void menAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menAyudaActionPerformed
         // TODO add your handling code here:
         
-        String ms = "Para empezar cree una impresora y una aplicacion ingresando con los botones Crear impresora y Crear Aplicacion, respectivamente, \n"
-                + "puede ver el log de ambas cuando estos hayan realizado alguna acción con los botones de Historial, \n"
-                + "con el boton Imprimir puede ir a la ventana de buscar y enviar archivos a imprimir, \n"
-                + "por ultimo, Ver estado muestra el estado de la cola de impresion de la impresora que se seleccione en esa pantalla";
+        String ms = "En esta sección podrá ejecutar los algoritmos de scheduling del disco  \n"
+                + "Para poder ejecutar el algoritmo, primero debe seleccionar una opción y posrerior a esto\n"
+                + "deberá dar click en el botón " +"Correr"+", esto procesará el algoritmo seleccionado y mostrará\n"
+                + "la gráfica correspondiente, de igual forma desplegará en la tabla el orden en que se accesaron las\n"
+                + "las pistas del disco y el número de pistas atravesadas, además se mostrará el promedio de búsqueda";
             JOptionPane.showMessageDialog(null, ms);
     }//GEN-LAST:event_menAyudaActionPerformed
 
@@ -340,11 +341,11 @@ public class Ejecución extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JMenu menAyuda;
+    private javax.swing.JMenuItem menCompa;
     private javax.swing.JTextField txtAverage;
     // End of variables declaration//GEN-END:variables
 }

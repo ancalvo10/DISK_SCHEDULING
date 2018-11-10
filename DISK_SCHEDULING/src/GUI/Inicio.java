@@ -148,21 +148,25 @@ public class Inicio extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
    
         createEjecution();
+        this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
  
         createTablaComparativa();
+        this.dispose();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
           
         createTablaComparativa();
+        this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
 
          createEjecution();
+         this.dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
