@@ -64,7 +64,7 @@ public class PRIORIDAD {
         pet = Control.originalPrioTracks;
         
         Control.setCabezalInicial(90);
-
+        // 1 es la prioridad mayor, 5 la menor
         pet.add(new Prioridad(1,183));
         pet.add(new Prioridad(2,37));
         pet.add(new Prioridad(3,122));
