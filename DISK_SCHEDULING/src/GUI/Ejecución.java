@@ -80,7 +80,8 @@ public class Ejecución extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        menAyuda = new javax.swing.JMenu();
+        menFile = new javax.swing.JMenu();
+        menAyuda = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         menCompa = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -125,13 +126,22 @@ public class Ejecución extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Consolas", 3, 14)); // NOI18N
         jLabel3.setText("Ejecución de algoritmos");
 
+        menFile.setText("File");
+        menFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menFileActionPerformed(evt);
+            }
+        });
+
         menAyuda.setText("Ayuda");
         menAyuda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menAyudaActionPerformed(evt);
             }
         });
-        jMenuBar1.add(menAyuda);
+        menFile.add(menAyuda);
+
+        jMenuBar1.add(menFile);
 
         jMenu2.setText("Ir");
 
@@ -278,12 +288,17 @@ public class Ejecución extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cboxAlgorithmActionPerformed
 
+    private void menFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menFileActionPerformed
+        // TODO add your handling code here:
+      
+    }//GEN-LAST:event_menFileActionPerformed
+
     private void menAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menAyudaActionPerformed
         // TODO add your handling code here:
-        
+          
         String ms = "En esta sección podrá ejecutar alguno de los algoritmos de scheduling del disco.  \n"
                 + "Para poder ejecutar el algoritmo, primero debe seleccionar una opción y posterior a esto\n"
-                + "deberá dar click en el botón " +"Correr"+", esto procesará el algoritmo seleccionado y mostrará\n"
+                + "deberá dar click en el botón Correr, esto procesará el algoritmo seleccionado y mostrará\n"
                 + "la gráfica correspondiente, de igual forma desplegará en la tabla el orden en que se accesaron las\n"
                 + "pistas del disco y el número de pistas atravesadas, además se mostrará el promedio de búsqueda";
             JOptionPane.showMessageDialog(null, ms);
@@ -344,8 +359,9 @@ public class Ejecución extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JMenu menAyuda;
+    private javax.swing.JMenuItem menAyuda;
     private javax.swing.JMenuItem menCompa;
+    private javax.swing.JMenu menFile;
     private javax.swing.JTextField txtAverage;
     // End of variables declaration//GEN-END:variables
 }

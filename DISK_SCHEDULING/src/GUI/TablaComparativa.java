@@ -56,7 +56,8 @@ public class TablaComparativa extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         btnCorrer = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        menAyuda = new javax.swing.JMenu();
+        menFile = new javax.swing.JMenu();
+        menAyuda = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -140,13 +141,23 @@ public class TablaComparativa extends javax.swing.JFrame {
             }
         });
 
+        menFile.setText("File");
+        menFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menFileActionPerformed(evt);
+            }
+        });
+
+        menAyuda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         menAyuda.setText("Ayuda");
         menAyuda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menAyudaActionPerformed(evt);
             }
         });
-        jMenuBar1.add(menAyuda);
+        menFile.add(menAyuda);
+
+        jMenuBar1.add(menFile);
 
         jMenu2.setText("Ir");
 
@@ -274,16 +285,10 @@ public class TablaComparativa extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void menAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menAyudaActionPerformed
+    private void menFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menFileActionPerformed
 
-           String ms = "En esta sección podrá ejecutar varios algoritmos de scheduling del disco para compararlos  \n"
-                + "Para poder ejecutar los algoritmos, primero debe seleccionar las opciones y posterior a esto\n"
-                + "deberá dar click en el botón " +"Correr"+", esto procesará los algoritmos seleccionados y mostrará\n"
-                + "la gráficas correspondientes a la comparación de los algoritmos, de igual forma desplegará\n"
-                + "en la tabla el orden en que se accesaron las pistas del disco y el número de pistas atravesadas,\n" 
-                + "además se mostrarán los promedios de búsqueda";
-            JOptionPane.showMessageDialog(null, ms);
-    }//GEN-LAST:event_menAyudaActionPerformed
+           
+    }//GEN-LAST:event_menFileActionPerformed
 
     private void btnCorrerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCorrerActionPerformed
         // TODO add your handling code here:
@@ -291,6 +296,17 @@ public class TablaComparativa extends javax.swing.JFrame {
         GraficoMultiline ventanaGraficoMulti = new GraficoMultiline();
         ventanaGraficoMulti.setVisible(true);
     }//GEN-LAST:event_btnCorrerActionPerformed
+
+    private void menAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menAyudaActionPerformed
+        // TODO add your handling code here:
+        String ms = "En esta sección podrá ejecutar varios algoritmos de scheduling del disco para compararlos  \n"
+                + "Para poder ejecutar los algoritmos, primero debe seleccionar las opciones y posterior a esto\n"
+                + "deberá dar click en el botón Correr, esto procesará los algoritmos seleccionados y mostrará\n"
+                + "la gráficas correspondientes a la comparación de los algoritmos, de igual forma desplegará\n"
+                + "en la tabla el orden en que se accesaron las pistas del disco y el número de pistas atravesadas,\n" 
+                + "además se mostrarán los promedios de búsqueda";
+            JOptionPane.showMessageDialog(null, ms);
+    }//GEN-LAST:event_menAyudaActionPerformed
 
     /**
      * @param args the command line  arguments
@@ -356,6 +372,7 @@ public class TablaComparativa extends javax.swing.JFrame {
     private javax.swing.JTable jTable4;
     private javax.swing.JLabel lblAlgoritmoP;
     private javax.swing.JLabel lblAlgoritmoS;
-    private javax.swing.JMenu menAyuda;
+    private javax.swing.JMenuItem menAyuda;
+    private javax.swing.JMenu menFile;
     // End of variables declaration//GEN-END:variables
 }
