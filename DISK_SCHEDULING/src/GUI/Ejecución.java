@@ -281,11 +281,11 @@ public class Ejecución extends javax.swing.JFrame {
     private void menAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menAyudaActionPerformed
         // TODO add your handling code here:
         
-        String ms = "En esta sección podrá ejecutar los algoritmos de scheduling del disco  \n"
-                + "Para poder ejecutar el algoritmo, primero debe seleccionar una opción y posrerior a esto\n"
+        String ms = "En esta sección podrá ejecutar alguno de los algoritmos de scheduling del disco.  \n"
+                + "Para poder ejecutar el algoritmo, primero debe seleccionar una opción y posterior a esto\n"
                 + "deberá dar click en el botón " +"Correr"+", esto procesará el algoritmo seleccionado y mostrará\n"
                 + "la gráfica correspondiente, de igual forma desplegará en la tabla el orden en que se accesaron las\n"
-                + "las pistas del disco y el número de pistas atravesadas, además se mostrará el promedio de búsqueda";
+                + "pistas del disco y el número de pistas atravesadas, además se mostrará el promedio de búsqueda";
             JOptionPane.showMessageDialog(null, ms);
     }//GEN-LAST:event_menAyudaActionPerformed
 
