@@ -7,8 +7,14 @@ package GUI;
 
 import static Controller.accessFrame.createInicio;
 import static Controller.accessFrame.createTablaComparativa;
+import SCHEDULING.SSTF;
+import UTIL.Control;
+import java.sql.Timestamp;
 import java.util.LinkedList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,10 +25,42 @@ public class Ejecución extends javax.swing.JFrame {
     /**
      * Creates new form Ejecución
      */
+    DefaultTableModel model;
     public Ejecución() {
+        //model = (DefaultTableModel) jTable1.getModel();
         initComponents();
     }
-    
+        
+    public void populateTable(){
+   
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        Integer[] tracks = Control.sstfTracks.toArray(new Integer[Control.sstfTracks.size()]);
+        Integer[] distancias = Control.sstfDistancias.toArray(new Integer[Control.sstfDistancias.size()]);
+       
+        //Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        //model.removeTableModelListener(jTable1);       
+        for (int i=0; i<tracks[i];i++) {
+            //for (Integer di : distancias) {
+              
+                model.addRow(new Object[] { tracks , distancias});
+                System.out.println(tracks[i].toString());
+            //}
+        }
+        
+//        try {
+//           
+//           Object track[][]= Control.sstfTracks.toArray(new Object[0][]);
+//           for (int i=0;i<track.length;i++) {
+//               for (int j=0;j<track[i].length;j++) {
+//                model.addRow(new Object[]{track[i][j]});
+//               }
+//           }
+//        } catch (Exception e){
+//              System.err.println("Error: " + e.getMessage());
+//        }
+        
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,14 +73,14 @@ public class Ejecución extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         cboxAlgorithm = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        btnCorrer = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         txtAverage = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        menAyuda = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -58,19 +96,16 @@ public class Ejecución extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Correr");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCorrer.setText("Correr");
+        btnCorrer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCorrerActionPerformed(evt);
             }
         });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Next track accessed", "Number of tracks traversed"
@@ -78,7 +113,7 @@ public class Ejecución extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        txtAverage.setText("jTextField1");
+        txtAverage.setEditable(false);
         txtAverage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAverageActionPerformed(evt);
@@ -90,8 +125,13 @@ public class Ejecución extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Consolas", 3, 14)); // NOI18N
         jLabel3.setText("Ejecución de algoritmos");
 
-        jMenu1.setText("Ayuda");
-        jMenuBar1.add(jMenu1);
+        menAyuda.setText("Ayuda");
+        menAyuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menAyudaActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(menAyuda);
 
         jMenu2.setText("Ir");
 
@@ -133,7 +173,7 @@ public class Ejecución extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(cboxAlgorithm, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(74, 74, 74)
-                                        .addComponent(jButton1)))))
+                                        .addComponent(btnCorrer)))))
                         .addGap(0, 118, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(126, 126, 126)
@@ -151,26 +191,73 @@ public class Ejecución extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
+                    .addComponent(btnCorrer)
                     .addComponent(jLabel1)
                     .addComponent(cboxAlgorithm, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(txtAverage, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(153, 153, 153))
+                .addComponent(txtAverage, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(140, 140, 140))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    private void fillAverageSSTF(){
+        String average = Integer.toString(Control.sstfPromedio);
+        txtAverage.setText(average);
+    }
+    
+    private void fillAverageSCAN(){
+        String average = Integer.toString(Control.scanPromedio);
+        txtAverage.setText(average);
+    }
+    
+    private void fillAverageRANDOM(){
+        String average = Integer.toString(Control.randomPromedio);
+        txtAverage.setText(average);
+    }
+    
+    private void fillAverageLIFO(){
+        String average = Integer.toString(Control.lifoPromedio);
+        txtAverage.setText(average);
+    }
+    
+    private void fillAverageFIFO(){
+        String average = Integer.toString(Control.fifoPromedio);
+        txtAverage.setText(average);
+    }
+
+    
+    private void btnCorrerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCorrerActionPerformed
+ 
+        String algoritmo = (String) cboxAlgorithm.getSelectedItem(); 
+        if (null != algoritmo)switch (algoritmo) {
+            case "SSTF":
+                fillAverageSSTF();
+                break;
+            case "SCAN":
+                fillAverageSCAN();
+                break;
+            case "RANDOM":
+                fillAverageRANDOM();
+                break;
+            case "LIFO":
+                fillAverageLIFO();
+                break;
+            case "FIFO":
+                fillAverageFIFO();
+                break;
+            default:
+                break;
+        }
+        
         Grafico ventanaGrafico = new Grafico();
         ventanaGrafico.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnCorrerActionPerformed
 
     private void txtAverageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAverageActionPerformed
         // TODO add your handling code here:
@@ -191,15 +278,30 @@ public class Ejecución extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cboxAlgorithmActionPerformed
 
+    private void menAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menAyudaActionPerformed
+        // TODO add your handling code here:
+        
+        String ms = "Para empezar cree una impresora y una aplicacion ingresando con los botones Crear impresora y Crear Aplicacion, respectivamente, \n"
+                + "puede ver el log de ambas cuando estos hayan realizado alguna acción con los botones de Historial, \n"
+                + "con el boton Imprimir puede ir a la ventana de buscar y enviar archivos a imprimir, \n"
+                + "por ultimo, Ver estado muestra el estado de la cola de impresion de la impresora que se seleccione en esa pantalla";
+            JOptionPane.showMessageDialog(null, ms);
+    }//GEN-LAST:event_menAyudaActionPerformed
+
+
+    
+            
     /**
      * @param args the command line arguments
      */
+
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+        */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -217,6 +319,8 @@ public class Ejecución extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Ejecución.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+     
+         
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -226,19 +330,21 @@ public class Ejecución extends javax.swing.JFrame {
         });
     }
 
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cboxAlgorithm;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnCorrer;
+    public static javax.swing.JComboBox<String> cboxAlgorithm;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JMenu menAyuda;
     private javax.swing.JTextField txtAverage;
     // End of variables declaration//GEN-END:variables
 }

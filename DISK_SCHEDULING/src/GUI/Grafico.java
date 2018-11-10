@@ -13,7 +13,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.util.LinkedList;
 import javax.swing.BorderFactory;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -112,20 +114,8 @@ public class Grafico extends javax.swing.JFrame {
         int tiempo = 0;
         
         XYSeries series = new XYSeries("Secuencia de pistas visitadas");
-//        series.add(10 , 55);
-//        series.add(20 , 58);
-//        series.add(30 , 39);
-//        series.add(40, 18);
-//        series.add(50, 90);
-//        series.add(60, 160);
-//        series.add(70, 150);
-//        series.add(80, 38);
-//        series.add(90, 184);
-        //
         Integer[] array = Control.sstfTracks.toArray(new Integer[Control.sstfTracks.size()]); 
 
-        //Displaying Array content
-        System.out.println("Array Elements:");
         for (Integer array1 : array) {
             series.add(tiempo, array1);
             tiempo = tiempo + 5;
@@ -206,30 +196,11 @@ public class Grafico extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
         
-        Control.setCabezalInicial(90);
-        LinkedList<Integer> pet = new LinkedList<Integer>();
-        pet = Control.originalTracks;
-
-        pet.add(98);
-        pet.add(183);
-        pet.add(37);
-        pet.add(122);
-        pet.add(14);
-        pet.add(124);
-        pet.add(65);
-        pet.add(67);
-        pet.add(140);
-        pet.add(90);
-        pet.add(15);
-        
-        
-        SSTF sstf = new SSTF();
-        sstf.start();
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                System.out.println("aqui");
                 new Grafico().setVisible(true);
             }
         });
