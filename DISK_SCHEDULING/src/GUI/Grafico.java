@@ -115,6 +115,7 @@ public class Grafico extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+    
    
     private XYDataset createDataset() {
         int tiempo = 0;
@@ -208,6 +209,7 @@ public class Grafico extends javax.swing.JFrame {
 
         return dataset;
     }
+    
 
     private JFreeChart createChart(XYDataset dataset) {
 
@@ -222,10 +224,10 @@ public class Grafico extends javax.swing.JFrame {
                 false 
         );
       
-
+        
         XYPlot plot = chart.getXYPlot();
 
-        
+        chart.getXYPlot().setDataset(chart.getXYPlot().getDataset());
     
         XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
         renderer.setSeriesPaint(0, Color.RED);
@@ -249,8 +251,11 @@ public class Grafico extends javax.swing.JFrame {
 
         chart.setTitle(new TextTitle("Disk Scheduling Algorithms",
                         new Font("Serif", java.awt.Font.BOLD, 18)));
-               
+             
         return chart;
+        
+       
+       
 
     }
     
@@ -260,17 +265,6 @@ public class Grafico extends javax.swing.JFrame {
     public static void main(String args[]) {
                 
         Control.leerArchivo();
-//        SSTF sstf = new SSTF();
-//        sstf.start();
-//        NSCAN nscan = new NSCAN();
-//        nscan.start();
-                    //fillAverageNSCAN();
-        
-        SCAN scan = new SCAN();
-        scan.start();
-                    
-//        FIFO fifo = new FIFO();
-//        fifo.start();
         
         
         java.awt.EventQueue.invokeLater(new Runnable() {

@@ -119,31 +119,31 @@ private XYDataset createDataset() {    // this method creates the data as time s
             series3.add(tiempo, array3);
             tiempo = tiempo + 5;
         }
-        
+        tiempo = 0;
         for (Integer array4 : arrayFSCAN) {
             //tiempo = 0;
             series4.add(tiempo, array4);
             tiempo = tiempo + 5;
         }
-        
+        tiempo = 0;
         for (Integer array5 : arrayNSCAN) {
             //tiempo = 0;
             series5.add(tiempo, array5);
             tiempo = tiempo + 5;
         }
-        
+        tiempo = 0;
         for (Integer array6 : arrayPRI) {
             //tiempo = 0;
             series6.add(tiempo, array6);
             tiempo = tiempo + 5;
         }
-        
+        tiempo = 0;
         for (Integer array7 : arrayRAM) {
             
             series7.add(tiempo, array7);
             tiempo = tiempo + 5;
         }
-        
+        tiempo = 0;
         for (Integer array8 : arraySCAN) {
             
             series8.add(tiempo, array8);
