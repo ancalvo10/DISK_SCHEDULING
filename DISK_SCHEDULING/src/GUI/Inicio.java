@@ -7,6 +7,7 @@ package GUI;
 
 import static Controller.accessFrame.createEjecution;
 import static Controller.accessFrame.createTablaComparativa;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,8 +37,10 @@ public class Inicio extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        menFile = new javax.swing.JMenu();
+        menAyuda = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -81,11 +84,25 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("Ayuda");
-        jMenuBar1.add(jMenu1);
+        jLabel2.setFont(new java.awt.Font("Consolas", 3, 14)); // NOI18N
+        jLabel2.setText("DISK SCHEDULING");
+
+        menFile.setText("File");
+
+        menAyuda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        menAyuda.setText("Ayuda");
+        menAyuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menAyudaActionPerformed(evt);
+            }
+        });
+        menFile.add(menAyuda);
+
+        jMenuBar1.add(menFile);
 
         jMenu2.setText("Ir");
 
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setText("Ejecución de referencias");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,6 +111,7 @@ public class Inicio extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem1);
 
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem2.setText("Comparar algoritmos");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,24 +128,30 @@ public class Inicio extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(187, 187, 187)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(275, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(224, Short.MAX_VALUE))
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(235, 235, 235))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(106, 106, 106)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(106, 106, 106)
+                .addGap(79, 79, 79)
+                .addComponent(jLabel2)
+                .addGap(67, 67, 67)
                 .addComponent(jButton4)
                 .addGap(18, 18, 18)
                 .addComponent(jButton5)
                 .addGap(18, 18, 18)
                 .addComponent(jButton6)
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
 
         pack();
@@ -168,6 +192,14 @@ public class Inicio extends javax.swing.JFrame {
          createEjecution();
          this.dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void menAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menAyudaActionPerformed
+      
+        String ms = "Para poder iniciar deberá cargar los parámetros iniciales, lo cual se puede hacer desde  \n"
+                + "el botón Cargar configuración. Posterior a esto podrá ejecutar un algoritmo o comparar varios \n"
+                + "algorimos desde los botones Ejecucón de referencias y Comparar algoritmos respectivamente.\n";
+            JOptionPane.showMessageDialog(null, ms);
+    }//GEN-LAST:event_menAyudaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -211,10 +243,12 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem menAyuda;
+    private javax.swing.JMenu menFile;
     // End of variables declaration//GEN-END:variables
 }

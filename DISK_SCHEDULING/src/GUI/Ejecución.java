@@ -133,6 +133,7 @@ public class Ejecución extends javax.swing.JFrame {
             }
         });
 
+        menAyuda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         menAyuda.setText("Ayuda");
         menAyuda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,6 +146,7 @@ public class Ejecución extends javax.swing.JFrame {
 
         jMenu2.setText("Ir");
 
+        menCompa.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
         menCompa.setText("Inicio");
         menCompa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,6 +155,7 @@ public class Ejecución extends javax.swing.JFrame {
         });
         jMenu2.add(menCompa);
 
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem2.setText("Comparar algoritmos");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -184,7 +187,7 @@ public class Ejecución extends javax.swing.JFrame {
                                         .addComponent(cboxAlgorithm, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(74, 74, 74)
                                         .addComponent(btnCorrer)))))
-                        .addGap(0, 118, Short.MAX_VALUE))
+                        .addGap(0, 194, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(126, 126, 126)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,7 +200,7 @@ public class Ejecución extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
+                .addContainerGap(47, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -296,11 +299,12 @@ public class Ejecución extends javax.swing.JFrame {
     private void menAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menAyudaActionPerformed
         // TODO add your handling code here:
           
-        String ms = "En esta sección podrá ejecutar alguno de los algoritmos de scheduling del disco.  \n"
-                + "Para poder ejecutar el algoritmo, primero debe seleccionar una opción y posterior a esto\n"
-                + "deberá dar click en el botón Correr, esto procesará el algoritmo seleccionado y mostrará\n"
-                + "la gráfica correspondiente, de igual forma desplegará en la tabla el orden en que se accesaron las\n"
-                + "pistas del disco y el número de pistas atravesadas, además se mostrará el promedio de búsqueda";
+        String ms = "En esta sección podrá ejecutar alguno de los algoritmos de scheduling del disco.\n"
+                + "Para poder ejecutar el algoritmo, primero debe seleccionar una opción y posterior \n"
+                + "a esto deberá dar click en el botón Correr, esto procesará el algoritmo seleccionado\n"
+                + " y mostrará la gráfica correspondiente, de igual forma desplegará en la tabla el \n"
+                + "orden en que se accesaron las pistas del disco y el número de pistas atravesadas, \n"
+                + "además se mostrará el promedio de búsqueda.";
             JOptionPane.showMessageDialog(null, ms);
     }//GEN-LAST:event_menAyudaActionPerformed
 
