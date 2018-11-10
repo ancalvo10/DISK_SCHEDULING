@@ -5,8 +5,10 @@
  */
 package UTIL;
 
+import java.io.File;
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.Scanner;
 
 /**
  *
@@ -92,6 +94,35 @@ public class Control {
     public static void addProceso(String nombre, int prioridad){
         Proceso proceso = new Proceso(nombre, prioridad);
         Control.procesos.add(proceso);
+    }
+    
+    public static void leerArchivo(){
+        try { 
+            File text = new File("request.txt");
+            System.out.println(text.getAbsolutePath());
+            Scanner sc = new Scanner(text);
+            while (sc.hasNext()) {
+                if(sc.next().equals("#defineprocess")){
+                    Control.procesos.add(new Proceso(sc.next(), sc.nextInt()));
+                }
+                System.out.println(Control.procesos.getLast().getNombre());
+                       System.out.println(Control.procesos.getLast().getPrioridad());
+                if(sc.next().equals("#cabezalInicial"))
+                    Control.setCabezalInicial(sc.nextInt());
+                System.out.println(Control.procesos.toString());
+                //String str = sc.next();
+                //System.out.println(str);
+            }
+            System.out.println(Control.getCabezalActual());
+        }
+        
+        catch(Exception e){
+            System.err.println("No se pudo abrir el archivo \n"+e);   
+        }
+    }
+    
+    public static void main(String[] args){
+        leerArchivo();
     }
     
 }
