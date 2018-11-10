@@ -9,6 +9,7 @@ package SCHEDULING;
  *
  * @author andre
  */
+import GUI.Grafico;
 import UTIL.Control;
 import java.util.LinkedList;
  
@@ -59,8 +60,10 @@ public class SSTF{
         pet.add(90);
         pet.add(15);
         
+        
         SSTF sstf = new SSTF();
         sstf.start();
+    
 
         System.out.println(Control.sstfTracks.toString());
         System.out.println(Control.sstfDistancias.toString());
