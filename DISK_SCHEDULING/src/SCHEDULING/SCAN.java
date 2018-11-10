@@ -6,8 +6,8 @@
 package SCHEDULING;
 
 import UTIL.Control;
-import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 
 /**
@@ -17,13 +17,41 @@ import java.util.LinkedList;
 public class SCAN {
     
     public void start(){
+        LinkedList<Integer> recorrido = new LinkedList<Integer>();
         
+        for(int copy = 0; copy < Control.originalTracks.size(); copy++){
+            Control.scanTracks.add(Control.originalTracks.get(copy));
+        }
+        Control.scanTracks.sort(Comparator.naturalOrder());
+        int contScan = 0;
+        while(Control.scanTracks.get(contScan) < Control.getCabezalActual()){
+            contScan++;
+        }
+        recorrido.add(Control.getCabezalActual());
+        while(Control.scanTracks.size() > contScan){
+            Control.scanDistancias.add(Math.abs(Control.getCabezalActual() - Control.scanTracks.get(contScan)));
+            Control.setCabezalActual(Control.scanTracks.get(contScan));
+            recorrido.add(Control.scanTracks.remove(contScan));
+        }
+        Control.scanTracks.sort(Comparator.reverseOrder());
+        while(!Control.scanTracks.isEmpty()){
+            Control.scanDistancias.add(Math.abs(Control.getCabezalActual() - Control.scanTracks.getFirst()));
+            Control.setCabezalActual(Control.scanTracks.getFirst());
+            recorrido.add(Control.scanTracks.removeFirst());
+        }
+        int contDis = 0;
+        while(contDis < Control.scanDistancias.size()){
+            Control.scanDistancia += Control.scanDistancias.get(contDis);
+            contDis++;
+        }
+        if(Control.scanDistancia != 0)
+            Control.scanPromedio = Control.scanDistancia/Control.originalTracks.size();
+        Control.scanTracks = recorrido;
     }
     
     public static void main(String[] args){
         LinkedList<Integer> pet = new LinkedList<Integer>();
         pet = Control.originalTracks;
-        Collections.sort(Control.originalTracks);
         
         Control.setCabezalInicial(90);
 
