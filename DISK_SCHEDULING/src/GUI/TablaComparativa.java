@@ -293,7 +293,6 @@ public class TablaComparativa extends javax.swing.JFrame {
     }//GEN-LAST:event_menFileActionPerformed
 
     private void btnCorrerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCorrerActionPerformed
-        // TODO add your handling code here:
         
         GraficoMultiline ventanaGraficoMulti = new GraficoMultiline();
         ventanaGraficoMulti.setVisible(true);
@@ -308,7 +307,7 @@ public class TablaComparativa extends javax.swing.JFrame {
                 + "Esto procesará los algoritmos seleccionados y mostrará la gráficas correspondientes a la \n"
                 + "comparación de los algoritmos, de igual forma desplegará en la tabla el orden en que se\n"
                 + "accesaron las pistas del disco y el número de pistas atravesadas, además se mostrarán\n" 
-                + "los promedios de búsqueda";
+                + "los promedios de búsqueda.";
             JOptionPane.showMessageDialog(null, ms);
     }//GEN-LAST:event_menAyudaActionPerformed
 
