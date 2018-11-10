@@ -301,7 +301,7 @@ public class TablaComparativa extends javax.swing.JFrame {
         
         GraficoMultiline ventanaGraficoMulti = new GraficoMultiline();
         ventanaGraficoMulti.setVisible(true);
-        Control.leerArchivo();
+  
     }//GEN-LAST:event_btnCorrerActionPerformed
 
     private void menAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menAyudaActionPerformed

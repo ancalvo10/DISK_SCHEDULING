@@ -255,6 +255,7 @@ public class Ejecución extends javax.swing.JFrame {
     private void fillAverageCSCAN(){
         String average = Integer.toString(Control.cscanPromedio);
         txtAverage.setText(average);
+               
     }
     
     private void fillAverageFSCAN(){
@@ -269,6 +270,7 @@ public class Ejecución extends javax.swing.JFrame {
     private void fillAveragePRIORIDAD(){
         String average = Integer.toString(Control.prioridadPromedio);
         txtAverage.setText(average);
+        
     }
     
     
@@ -277,64 +279,93 @@ public class Ejecución extends javax.swing.JFrame {
     
     private void btnCorrerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCorrerActionPerformed
         Control.leerArchivo();
+        
         String algoritmo = (String) cboxAlgorithm.getSelectedItem(); 
-        if (null != algoritmo)switch (algoritmo) {
-            case "C-SCAN":
-                Control.setCabezalActual(Control.getCabezalActual());
-                CSCAN cscan = new CSCAN();
-                cscan.start();
-                fillAverageCSCAN();
-                break;
-            case "FSCAN":
-                Control.setCabezalActual(Control.getCabezalActual());
-                FSCAN fscan = new FSCAN();
-                fscan.start();
-                fillAverageFSCAN();
-                break;
-            case "N-SCAN":
-                Control.setCabezalActual(Control.getCabezalActual());
-                NSCAN nscan = new NSCAN();
-                nscan.start();
-                fillAverageNSCAN();
-                break;
-            case "PRIORIDAD":
-                Control.setCabezalActual(Control.getCabezalActual());
-                PRIORIDAD prioridad = new PRIORIDAD();
-                prioridad.start();
-                fillAveragePRIORIDAD();
-                break;    
-            case "SSTF":
-                Control.setCabezalActual(Control.getCabezalActual());
-                SSTF sstf = new SSTF();
-                sstf.start();
-                fillAverageSSTF();
-                break;
-            case "SCAN":
-                Control.setCabezalActual(Control.getCabezalActual());
-                SCAN scan = new SCAN();
-                scan.start();
-                fillAverageSCAN();
-                break;
-            case "RANDOM":
-                Control.setCabezalActual(Control.getCabezalActual());
-                RANDOM random = new RANDOM();
-                random.start();
-                fillAverageRANDOM();
-                break;
-            case "LIFO":
-                Control.setCabezalActual(Control.getCabezalActual());
-                LIFO lifo = new LIFO();
-                lifo.start();
-                fillAverageLIFO();
-                break;
-            case "FIFO":
-                Control.setCabezalActual(Control.getCabezalActual());
-                FIFO fifo = new FIFO();
-                fifo.start();
-                fillAverageFIFO();
-                break;
-            default:
-                break;
+        
+//        if (algoritmo == "C-SCAN" ){
+//            CSCAN cscan = new CSCAN();
+//            cscan.start();
+//            fillAverageCSCAN();
+//        }
+//        
+//        else if (algoritmo == "FSCAN"){
+//            FSCAN fscan = new FSCAN();
+//            fscan.start();
+//            fillAverageFSCAN();
+//        }
+//        
+//        else {
+//            NSCAN nscan = new NSCAN();
+//                    nscan.start();
+//                    fillAverageNSCAN();
+//        }
+        Control.leerArchivo();
+           
+        
+        if (null == algoritmo) {
+        } else {
+            switch (algoritmo) {
+                
+                case "C-SCAN":
+                   
+                    Control.setCabezalActual(Control.getCabezalActual());
+                    CSCAN cscan = new CSCAN();
+                    cscan.start();
+                    fillAverageCSCAN();
+                    break;
+                case "FSCAN":
+                    Control.setCabezalActual(Control.getCabezalActual());
+                    FSCAN fscan = new FSCAN();
+                    fscan.start();
+                    fillAverageFSCAN();
+                    break;
+                case "N-SCAN":
+                    Control.setCabezalActual(Control.getCabezalActual());
+                    NSCAN nscan = new NSCAN();
+                    nscan.start();
+                    fillAverageNSCAN();
+                    break;
+                case "PRIORIDAD":
+                    System.out.println("Prioridad");
+                    Control.setCabezalActual(Control.getCabezalActual());
+                    PRIORIDAD prioridad = new PRIORIDAD();
+                    prioridad.start();
+                    System.out.println("Prioridad");
+                    fillAveragePRIORIDAD();
+                    break;
+                case "SSTF":
+                    Control.setCabezalActual(Control.getCabezalActual());
+                    SSTF sstf = new SSTF();
+                    sstf.start();
+                    fillAverageSSTF();
+                    break;
+                case "SCAN":
+                    Control.setCabezalActual(Control.getCabezalActual());
+                    SCAN scan = new SCAN();
+                    scan.start();
+                    fillAverageSCAN();
+                    break;
+                case "RANDOM":
+                    Control.setCabezalActual(Control.getCabezalActual());
+                    RANDOM random = new RANDOM();
+                    random.start();
+                    fillAverageRANDOM();
+                    break;
+                case "LIFO":
+                    Control.setCabezalActual(Control.getCabezalActual());
+                    LIFO lifo = new LIFO();
+                    lifo.start();
+                    fillAverageLIFO();
+                    break;
+                case "FIFO":
+                    Control.setCabezalActual(Control.getCabezalActual());
+                    FIFO fifo = new FIFO();
+                    fifo.start();
+                    fillAverageFIFO();
+                    break;
+                default:
+                    break;
+            }
         }
         
         Grafico ventanaGrafico = new Grafico();
@@ -423,7 +454,7 @@ public class Ejecución extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCorrer;
-    public javax.swing.JComboBox<String> cboxAlgorithm;
+    public static javax.swing.JComboBox<String> cboxAlgorithm;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

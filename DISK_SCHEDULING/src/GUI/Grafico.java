@@ -7,7 +7,10 @@ package GUI;
 
 
 import SCHEDULING.CSCAN;
+import SCHEDULING.FIFO;
+import SCHEDULING.NSCAN;
 import SCHEDULING.RANDOM;
+import SCHEDULING.SCAN;
 import SCHEDULING.SSTF;
 import UTIL.Control;
 import java.awt.BasicStroke;
@@ -116,16 +119,92 @@ public class Grafico extends javax.swing.JFrame {
     private XYDataset createDataset() {
         int tiempo = 0;
         
-        XYSeries series = new XYSeries("Secuencia de pistas visitadas");
-        Integer[] array = Control.sstfTracks.toArray(new Integer[Control.sstfTracks.size()]); 
+        //XYSeries series = new XYSeries("Secuencia de pistas visitadas");
+        XYSeries series1 = new XYSeries("C-SCAN");
+        XYSeries series2 = new XYSeries("FIFO");
+        XYSeries series3 = new XYSeries("LIFO");
+        XYSeries series4 = new XYSeries("F-SCAN");
+        XYSeries series5 = new XYSeries("N-SCAN");
+        XYSeries series6 = new XYSeries("PRIORIDAD");
+        XYSeries series7 = new XYSeries("RANDOM");
+        XYSeries series8 = new XYSeries("SCAN");
+        XYSeries series9 = new XYSeries("SSTF");
+    
 
-        for (Integer array1 : array) {
-            series.add(tiempo, array1);
+        Integer[] arrayCSCAN = Control.sstfTracks.toArray(new Integer[Control.sstfTracks.size()]);
+        Integer[] arrayFIFO = Control.fifoTracks.toArray(new Integer[Control.fifoTracks.size()]);
+        Integer[] arrayLIFO = Control.lifoTracks.toArray(new Integer[Control.lifoTracks.size()]);
+        Integer[] arrayFSCAN = Control.fscanTracks.toArray(new Integer[Control.fscanTracks.size()]);
+        Integer[] arrayNSCAN = Control.nscanTracks.toArray(new Integer[Control.nscanTracks.size()]);
+        Integer[] arrayPRI = Control.prioridadTracksEstadisticas.toArray(new Integer[Control.prioridadTracksEstadisticas.size()]);
+        Integer[] arrayRAM = Control.randomTracks.toArray(new Integer[Control.randomTracks.size()]);
+        Integer[] arraySCAN = Control.scanTracks.toArray(new Integer[Control.scanTracks.size()]);
+        Integer[] arraySSTF = Control.sstfTracks.toArray(new Integer[Control.sstfTracks.size()]);
+      
+        for (Integer array1 : arrayCSCAN) {
+            series1.add(tiempo, array1);
+            tiempo = tiempo + 5;
+        }
+        tiempo = 0;
+        for (Integer array2 : arrayFIFO) {
+            //tiempo = 0;
+            series2.add(tiempo, array2);
+            tiempo = tiempo + 5;
+        }
+        tiempo = 0;
+        for (Integer array3 : arrayLIFO) {
+            //tiempo = 0;
+            series3.add(tiempo, array3);
+            tiempo = tiempo + 5;
+        }
+        tiempo = 0;
+        for (Integer array4 : arrayFSCAN) {
+            //
+            series4.add(tiempo, array4);
+            tiempo = tiempo + 5;
+        }
+        tiempo = 0;
+        for (Integer array5 : arrayNSCAN) {
+            //
+            series5.add(tiempo, array5);
+            tiempo = tiempo + 5;
+        }
+        tiempo = 0;
+        for (Integer array6 : arrayPRI) {
+            //tiempo = 0;
+            series6.add(tiempo, array6);
+            tiempo = tiempo + 5;
+        }
+        tiempo = 0;
+        for (Integer array7 : arrayRAM) {
+            
+            series7.add(tiempo, array7);
+            tiempo = tiempo + 5;
+        }
+        tiempo = 0;
+        for (Integer array8 : arraySCAN) {
+            
+            series8.add(tiempo, array8);
+            tiempo = tiempo + 5;
+        }
+        tiempo = 0;
+        for (Integer array9 : arraySSTF) {
+            
+            series9.add(tiempo, array9);
             tiempo = tiempo + 5;
         }
        
         XYSeriesCollection dataset = new XYSeriesCollection();
-        dataset.addSeries(series);
+        //dataset.addSeries(series);
+        dataset.addSeries(series1);
+        dataset.addSeries(series2);
+        dataset.addSeries(series3);
+        dataset.addSeries(series4);
+        dataset.addSeries(series5);
+        dataset.addSeries(series6);
+        dataset.addSeries(series7);
+        dataset.addSeries(series8);
+        dataset.addSeries(series9);
 
         return dataset;
     }
@@ -179,39 +258,23 @@ public class Grafico extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Grafico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Grafico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Grafico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Grafico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        
-//        Control.leerArchivo();
+                
+        Control.leerArchivo();
 //        SSTF sstf = new SSTF();
 //        sstf.start();
-
+//        NSCAN nscan = new NSCAN();
+//        nscan.start();
+                    //fillAverageNSCAN();
+        
+        SCAN scan = new SCAN();
+        scan.start();
+                    
+//        FIFO fifo = new FIFO();
+//        fifo.start();
         
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                System.out.println("aqui");
                 new Grafico().setVisible(true);
             }
         });
