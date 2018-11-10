@@ -5,6 +5,9 @@
  */
 package GUI;
 
+
+import SCHEDULING.CSCAN;
+import SCHEDULING.RANDOM;
 import SCHEDULING.SSTF;
 import UTIL.Control;
 import java.awt.BasicStroke;
@@ -198,6 +201,11 @@ public class Grafico extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Grafico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+
+        
+//        Control.leerArchivo();
+//        SSTF sstf = new SSTF();
+//        sstf.start();
 
         
         

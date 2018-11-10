@@ -107,42 +107,42 @@ private XYDataset createDataset() {    // this method creates the data as time s
             series1.add(tiempo, array1);
             tiempo = tiempo + 5;
         }
-        
+        tiempo = 0;
         for (Integer array2 : arrayFIFO) {
             series2.add(tiempo, array2);
             tiempo = tiempo + 5;
         }
-        
+        tiempo = 0;
         for (Integer array3 : arrayLIFO) {
             series3.add(tiempo, array3);
             tiempo = tiempo + 5;
         }
-        
+        tiempo = 0;
         for (Integer array4 : arrayFSCAN) {
             series4.add(tiempo, array4);
             tiempo = tiempo + 5;
         }
-        
+        tiempo = 0;
         for (Integer array5 : arrayNSCAN) {
             series5.add(tiempo, array5);
             tiempo = tiempo + 5;
         }
-        
+        tiempo = 0;
         for (Integer array6 : arrayPRI) {
             series6.add(tiempo, array6);
             tiempo = tiempo + 5;
         }
-        
+        tiempo = 0;
         for (Integer array7 : arrayRAM) {
             series7.add(tiempo, array7);
             tiempo = tiempo + 5;
         }
-        
+        tiempo = 0;
         for (Integer array8 : arraySCAN) {
             series8.add(tiempo, array8);
             tiempo = tiempo + 5;
         }
-        
+        tiempo = 0;
         for (Integer array9 : arraySSTF) {
             series9.add(tiempo, array9);
             tiempo = tiempo + 5;
@@ -260,7 +260,7 @@ private void customizeChart(JFreeChart chart) {   // here we make some customiza
         //</editor-fold>
          
                
-        
+        Control.leerArchivo();
         CSCAN cscan = new CSCAN();
         cscan.start();
         

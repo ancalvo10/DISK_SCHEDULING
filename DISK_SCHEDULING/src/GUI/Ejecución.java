@@ -7,6 +7,14 @@ package GUI;
 
 import static Controller.accessFrame.createInicio;
 import static Controller.accessFrame.createTablaComparativa;
+import SCHEDULING.CSCAN;
+import SCHEDULING.FIFO;
+import SCHEDULING.FSCAN;
+import SCHEDULING.LIFO;
+import SCHEDULING.NSCAN;
+import SCHEDULING.PRIORIDAD;
+import SCHEDULING.RANDOM;
+import SCHEDULING.SCAN;
 import SCHEDULING.SSTF;
 import UTIL.Control;
 import java.sql.Timestamp;
@@ -90,7 +98,7 @@ public class Ejecución extends javax.swing.JFrame {
 
         jLabel1.setText("Seleccione un algoritmo:");
 
-        cboxAlgorithm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "C-SCAN", "FIFO", "FSCAN", "LIFO", "N-SCAN", "PRIORIDAD", "RAMDOM", "SCAN", "SSTF" }));
+        cboxAlgorithm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "C-SCAN", "FIFO", "FSCAN", "LIFO", "N-SCAN", "PRIORIDAD", "RANDOM", "SCAN", "SSTF" }));
         cboxAlgorithm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboxAlgorithmActionPerformed(evt);
@@ -243,25 +251,77 @@ public class Ejecución extends javax.swing.JFrame {
         String average = Integer.toString(Control.fifoPromedio);
         txtAverage.setText(average);
     }
+    
+    private void fillAverageCSCAN(){
+        String average = Integer.toString(Control.cscanPromedio);
+        txtAverage.setText(average);
+    }
+    
+    private void fillAverageFSCAN(){
+        String average = Integer.toString(Control.fscanPromedio);
+        txtAverage.setText(average);
+    }
+    
+    private void fillAverageNSCAN(){
+        String average = Integer.toString(Control.nscanPromedio);
+        txtAverage.setText(average);
+    }
+    private void fillAveragePRIORIDAD(){
+        String average = Integer.toString(Control.prioridadPromedio);
+        txtAverage.setText(average);
+    }
+    
+    
+    
 
     
     private void btnCorrerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCorrerActionPerformed
- 
+        Control.leerArchivo();
         String algoritmo = (String) cboxAlgorithm.getSelectedItem(); 
         if (null != algoritmo)switch (algoritmo) {
+            case "C-SCAN":
+                CSCAN cscan = new CSCAN();
+                cscan.start();
+                fillAverageCSCAN();
+                break;
+            case "FSCAN":
+                FSCAN fscan = new FSCAN();
+                fscan.start();
+                fillAverageFSCAN();
+                break;
+            case "N-SCAN":
+                NSCAN nscan = new NSCAN();
+                nscan.start();
+                fillAverageNSCAN();
+                break;
+            case "PRIORIDAD":
+                PRIORIDAD prioridad = new PRIORIDAD();
+                prioridad.start();
+                fillAveragePRIORIDAD();
+                break;    
             case "SSTF":
+                SSTF sstf = new SSTF();
+                sstf.start();
                 fillAverageSSTF();
                 break;
             case "SCAN":
+                SCAN scan = new SCAN();
+                scan.start();
                 fillAverageSCAN();
                 break;
             case "RANDOM":
+                RANDOM random = new RANDOM();
+                random.start();
                 fillAverageRANDOM();
                 break;
             case "LIFO":
+                LIFO lifo = new LIFO();
+                lifo.start();
                 fillAverageLIFO();
                 break;
             case "FIFO":
+                FIFO fifo = new FIFO();
+                fifo.start();
                 fillAverageFIFO();
                 break;
             default:
@@ -354,7 +414,7 @@ public class Ejecución extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCorrer;
-    public static javax.swing.JComboBox<String> cboxAlgorithm;
+    public javax.swing.JComboBox<String> cboxAlgorithm;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -366,6 +426,6 @@ public class Ejecución extends javax.swing.JFrame {
     private javax.swing.JMenuItem menAyuda;
     private javax.swing.JMenuItem menCompa;
     private javax.swing.JMenu menFile;
-    private javax.swing.JTextField txtAverage;
+    private static javax.swing.JTextField txtAverage;
     // End of variables declaration//GEN-END:variables
 }

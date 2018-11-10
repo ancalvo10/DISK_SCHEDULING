@@ -7,6 +7,7 @@ package GUI;
 
 import static Controller.accessFrame.createEjecution;
 import static Controller.accessFrame.createTablaComparativa;
+import UTIL.Control;
 import javax.swing.JOptionPane;
 
 /**
@@ -34,7 +35,7 @@ public class Inicio extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnCargarConfg = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -63,10 +64,10 @@ public class Inicio extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton4.setText("Cargar configuración");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnCargarConfg.setText("Cargar configuración");
+        btnCargarConfg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnCargarConfgActionPerformed(evt);
             }
         });
 
@@ -133,7 +134,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCargarConfg, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(235, 235, 235))
             .addGroup(layout.createSequentialGroup()
                 .addGap(106, 106, 106)
@@ -146,7 +147,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addGap(79, 79, 79)
                 .addComponent(jLabel2)
                 .addGap(67, 67, 67)
-                .addComponent(jButton4)
+                .addComponent(btnCargarConfg)
                 .addGap(18, 18, 18)
                 .addComponent(jButton5)
                 .addGap(18, 18, 18)
@@ -165,9 +166,19 @@ public class Inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void btnCargarConfgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarConfgActionPerformed
+        try {
+            
+            Control.leerArchivo();
+            String ms = "El archivó se cargó correctamente";
+            JOptionPane.showMessageDialog(null, ms);
+        }
+        catch(Error e){
+            String mse = "Ha ocurrido un error al cargar el archivo";
+            JOptionPane.showMessageDialog(null, mse);
+        
+        }
+    }//GEN-LAST:event_btnCargarConfgActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
    
@@ -237,10 +248,10 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCargarConfg;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel2;
