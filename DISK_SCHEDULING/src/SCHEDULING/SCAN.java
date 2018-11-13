@@ -18,6 +18,9 @@ public class SCAN {
     
     public void start(){
         LinkedList<Integer> recorrido = new LinkedList<Integer>();
+        Control.scanTracks = new LinkedList<>();
+        Control.scanDistancias = new LinkedList<>();
+        Control.scanDistancia = 0;
         
         for(int copy = 0; copy < Control.originalTracks.size(); copy++){
             Control.scanTracks.add(Control.originalTracks.get(copy));

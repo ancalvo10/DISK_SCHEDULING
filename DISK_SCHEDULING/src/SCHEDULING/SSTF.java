@@ -17,6 +17,9 @@ public class SSTF{
     
     public void start(){
         LinkedList<Integer> recorrido = new LinkedList<Integer>();
+        Control.sstfTracks = new LinkedList<>();
+        Control.sstfDistancias = new LinkedList<>();
+        Control.sstfDistancia = 0;
         
         for(int copy = 0; copy < Control.originalTracks.size(); copy++){
             Control.sstfTracks.add(Control.originalTracks.get(copy));

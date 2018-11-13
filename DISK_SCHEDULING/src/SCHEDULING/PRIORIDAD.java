@@ -7,7 +7,6 @@ package SCHEDULING;
 
 import UTIL.Control;
 import UTIL.Prioridad;
-import java.util.Collections;
 import java.util.LinkedList;
 
 /**
@@ -19,6 +18,9 @@ public class PRIORIDAD {
     public void start(){
         LinkedList<Prioridad> recorridoPrio = new LinkedList<>();
         LinkedList<Integer> recorrido = new LinkedList<>();
+        Control.prioridadTracks = new LinkedList<>();
+        Control.prioridadDistancias = new LinkedList<>();
+        Control.prioridadDistancia = 0;
         
         
         for(int copy = 0; copy < Control.originalPrioTracks.size(); copy++){
@@ -44,6 +46,7 @@ public class PRIORIDAD {
             recorrido.add(Control.getCabezalActual());
             Control.prioridadDistancias.add(Math.abs(Control.getCabezalActual() - recorridoPrio.getFirst().getPista()));
         }
+        Control.setCabezalActual(recorridoPrio.getFirst().getPista());
         
         int contDis = 0;
         while(contDis < Control.prioridadDistancias.size()){
@@ -59,7 +62,7 @@ public class PRIORIDAD {
     
     
     public static void main(String[] args){
-        LinkedList<Prioridad> pet = new LinkedList<Prioridad>();
+        LinkedList<Prioridad> pet;// = new LinkedList<>();
         pet = Control.originalPrioTracks;
         
         Control.setCabezalInicial(90);

@@ -17,6 +17,9 @@ public class CSCAN {
     
     public void start(){
         LinkedList<Integer> recorrido = new LinkedList<Integer>();
+        Control.cscanTracks = new LinkedList<>();
+        Control.cscanDistancias = new LinkedList<>();
+        Control.cscanDistancia = 0;
         
         for(int copy = 0; copy < Control.originalTracks.size(); copy++){
             Control.cscanTracks.add(Control.originalTracks.get(copy));

@@ -19,6 +19,9 @@ public class LIFOPRI {
     public void start(){
         LinkedList<Prioridad> recorridoPrio = new LinkedList<>();
         LinkedList<Integer> recorrido = new LinkedList<>();
+        Control.lifoPriTracks = new LinkedList<>();
+        Control.lifoPriDistancias = new LinkedList<>();
+        Control.lifoPriDistancia = 0;
         
         
         for(int copy = 0; copy < Control.originalPrioTracks.size(); copy++){
@@ -52,6 +55,7 @@ public class LIFOPRI {
         }
         if(Control.lifoPriDistancia != 0)
             Control.lifoPriPromedio = Control.lifoPriDistancia/Control.originalPrioTracks.size();
+        Control.setCabezalActual(recorridoPrio.getFirst().getPista());
         recorrido.add(recorridoPrio.removeFirst().getPista());
         Control.lifoPriTracksEstadisticas = recorrido;
         

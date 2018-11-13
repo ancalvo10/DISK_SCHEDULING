@@ -17,6 +17,9 @@ public class RANDOM {
     
     public void start(){
         LinkedList<Integer> recorrido = new LinkedList<Integer>();
+        Control.randomTracks.clear();
+        Control.randomDistancias.clear();
+        Control.randomDistancia = 0;
         
         for(int copy = 0; copy < Control.originalTracks.size(); copy++){
             Control.randomTracks.add(Control.originalTracks.get(copy));
@@ -40,6 +43,7 @@ public class RANDOM {
         }
         if(Control.randomDistancia != 0)
             Control.randomPromedio = Control.randomDistancia/Control.originalTracks.size();
+        Control.setCabezalActual(Control.randomTracks.getFirst());
         recorrido.add(Control.randomTracks.removeFirst());
         Control.randomTracks = recorrido;
     }

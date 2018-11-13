@@ -9,8 +9,10 @@ import static Controller.accessFrame.createInicio;
 import static Controller.accessFrame.createTablaComparativa;
 import SCHEDULING.CSCAN;
 import SCHEDULING.FIFO;
+import SCHEDULING.FIFOPRI;
 import SCHEDULING.FSCAN;
 import SCHEDULING.LIFO;
+import SCHEDULING.LIFOPRI;
 import SCHEDULING.NSCAN;
 import SCHEDULING.PRIORIDAD;
 import SCHEDULING.RANDOM;
@@ -39,19 +41,21 @@ public class Ejecución extends javax.swing.JFrame {
         initComponents();
     }
         
-    public void populateTable(){
-   
+    public void populateTable(LinkedList<Integer> Tracks, LinkedList<Integer> Distancias){
+        //jTable1.setModel(new DefaultTableModel());
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        Integer[] tracks = Control.sstfTracks.toArray(new Integer[Control.sstfTracks.size()]);
-        Integer[] distancias = Control.sstfDistancias.toArray(new Integer[Control.sstfDistancias.size()]);
+        model.setRowCount(0);
+        //Integer[] tracks = Tracks.toArray(new Integer[Tracks.size()]);
+        //Integer[] distancias = Distancias.toArray(new Integer[Distancias.size()]);
        
         //Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        //model.removeTableModelListener(jTable1);       
-        for (int i=0; i<tracks[i];i++) {
+        //model.removeTableModelListener(jTable1);     
+        model.addRow(new Object[] { Tracks.get(0) , 0});
+        for (int i=0 ; i < Tracks.size()-1 ; i++) {
             //for (Integer di : distancias) {
               
-                model.addRow(new Object[] { tracks , distancias});
-                System.out.println(tracks[i].toString());
+                model.addRow(new Object[] { Tracks.get(i+1) , Distancias.get(i)});
+                //System.out.println(tracks[i].toString());
             //}
         }
         
@@ -243,12 +247,12 @@ public class Ejecución extends javax.swing.JFrame {
     }
     
     private void fillAverageLIFO(){
-        String average = Integer.toString(Control.lifoPromedio);
+        String average = Integer.toString(Control.lifoPriPromedio);
         txtAverage.setText(average);
     }
     
     private void fillAverageFIFO(){
-        String average = Integer.toString(Control.fifoPromedio);
+        String average = Integer.toString(Control.fifoPriPromedio);
         txtAverage.setText(average);
     }
     
@@ -278,7 +282,7 @@ public class Ejecución extends javax.swing.JFrame {
 
     
     private void btnCorrerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCorrerActionPerformed
-        Control.leerArchivo();
+        //Control.leerArchivo();
         
         String algoritmo = (String) cboxAlgorithm.getSelectedItem(); 
         
@@ -299,7 +303,7 @@ public class Ejecución extends javax.swing.JFrame {
 //                    nscan.start();
 //                    fillAverageNSCAN();
 //        }
-        Control.leerArchivo();
+        //Control.leerArchivo();
            
         
         if (null == algoritmo) {
@@ -311,18 +315,21 @@ public class Ejecución extends javax.swing.JFrame {
                     Control.setCabezalActual(Control.getCabezalActual());
                     CSCAN cscan = new CSCAN();
                     cscan.start();
+                    populateTable(Control.cscanTracks,Control.cscanDistancias);
                     fillAverageCSCAN();
                     break;
                 case "FSCAN":
                     Control.setCabezalActual(Control.getCabezalActual());
                     FSCAN fscan = new FSCAN();
                     fscan.start();
+                    populateTable(Control.fscanTracks,Control.fscanDistancias);
                     fillAverageFSCAN();
                     break;
                 case "N-SCAN":
                     Control.setCabezalActual(Control.getCabezalActual());
                     NSCAN nscan = new NSCAN();
                     nscan.start();
+                    populateTable(Control.nscanTracks,Control.nscanDistancias);
                     fillAverageNSCAN();
                     break;
                 case "PRIORIDAD":
@@ -331,36 +338,42 @@ public class Ejecución extends javax.swing.JFrame {
                     PRIORIDAD prioridad = new PRIORIDAD();
                     prioridad.start();
                     System.out.println("Prioridad");
+                    populateTable(Control.prioridadTracksEstadisticas, Control.prioridadDistancias);
                     fillAveragePRIORIDAD();
                     break;
                 case "SSTF":
                     Control.setCabezalActual(Control.getCabezalActual());
                     SSTF sstf = new SSTF();
                     sstf.start();
+                    populateTable(Control.sstfTracks,Control.sstfDistancias);
                     fillAverageSSTF();
                     break;
                 case "SCAN":
                     Control.setCabezalActual(Control.getCabezalActual());
                     SCAN scan = new SCAN();
                     scan.start();
+                    populateTable(Control.scanTracks, Control.scanDistancias);
                     fillAverageSCAN();
                     break;
                 case "RANDOM":
                     Control.setCabezalActual(Control.getCabezalActual());
                     RANDOM random = new RANDOM();
                     random.start();
+                    populateTable(Control.randomTracks, Control.randomDistancias);
                     fillAverageRANDOM();
                     break;
                 case "LIFO":
                     Control.setCabezalActual(Control.getCabezalActual());
-                    LIFO lifo = new LIFO();
-                    lifo.start();
+                    LIFOPRI lifoPri = new LIFOPRI();
+                    lifoPri.start();
+                    populateTable(Control.lifoPriTracksEstadisticas, Control.lifoPriDistancias);
                     fillAverageLIFO();
                     break;
                 case "FIFO":
                     Control.setCabezalActual(Control.getCabezalActual());
-                    FIFO fifo = new FIFO();
-                    fifo.start();
+                    FIFOPRI fifoPri = new FIFOPRI();
+                    fifoPri.start();
+                    populateTable(Control.fifoPriTracksEstadisticas, Control.fifoPriDistancias);
                     fillAverageFIFO();
                     break;
                 default:

@@ -18,6 +18,9 @@ public class FIFOPRI {
     public void start(){
         LinkedList<Prioridad> recorridoPrio = new LinkedList<>();
         LinkedList<Integer> recorrido = new LinkedList<>();
+        Control.fifoPriTracks = new LinkedList<>();
+        Control.fifoPriDistancias = new LinkedList<>();
+        Control.fifoPriDistancia = 0;
         
         
         for(int copy = 0; copy < Control.originalPrioTracks.size(); copy++){
@@ -51,6 +54,7 @@ public class FIFOPRI {
         }
         if(Control.fifoPriDistancia != 0)
             Control.fifoPriPromedio = Control.fifoPriDistancia/Control.originalPrioTracks.size();
+        Control.setCabezalActual(recorridoPrio.getFirst().getPista());
         recorrido.add(recorridoPrio.removeFirst().getPista());
         Control.fifoPriTracksEstadisticas = recorrido;
         
