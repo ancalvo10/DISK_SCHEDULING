@@ -61,6 +61,16 @@ public class Control {
     public static LinkedList<Integer> fscanDistancias = new LinkedList<Integer>();
     public static int fscanDistancia = 0;
     public static int fscanPromedio = 0;
+    public static LinkedList<Prioridad> fifoPriTracks = new LinkedList<Prioridad>();
+    public static LinkedList<Integer> fifoPriTracksEstadisticas = new LinkedList<Integer>();
+    public static LinkedList<Integer> fifoPriDistancias = new LinkedList<Integer>();
+    public static int fifoPriDistancia = 0;
+    public static int fifoPriPromedio = 0;
+    public static LinkedList<Prioridad> lifoPriTracks = new LinkedList<Prioridad>();
+    public static LinkedList<Integer> lifoPriTracksEstadisticas = new LinkedList<Integer>();
+    public static LinkedList<Integer> lifoPriDistancias = new LinkedList<Integer>();
+    public static int lifoPriDistancia = 0;
+    public static int lifoPriPromedio = 0;
     
     public void randomList(){
         Collections.shuffle(randomTracks);
@@ -116,18 +126,24 @@ public class Control {
                 if(sc.next().equals("#defineprocess")){
                     Control.procesos.add(new Proceso(sc.next(), sc.nextInt()));
                 }
-                System.out.println(Control.procesos.getLast().getNombre());
+                System.out.print(Control.procesos.getLast().getNombre());
                        System.out.println(Control.procesos.getLast().getPrioridad());
                 //if(sc.next().equals("#cabezalInicial"))
                 
-                System.out.println(Control.procesos.toString());
+                //System.out.println(Control.procesos.toString());
                 //String str = sc.next();
                 //System.out.println(str);
             }
             while (sc.hasNext("#cabezalInicial")) {
                 if(sc.next().equals("#cabezalInicial")){
                     Control.setCabezalInicial(sc.nextInt());
-                    System.out.println(Control.getCabezalActual());
+                    System.out.println("CabezalInicial: "+Control.getCabezalActual());
+                }
+            }
+            while (sc.hasNext("#maxTracks")) {
+                if(sc.next().equals("#maxTracks")){
+                    Control.setPistasTotales(sc.nextInt());
+                    System.out.println("MaxTracks: "+Control.getPistasTotales());
                 }
             }
             sc.next("#tracks");
@@ -141,7 +157,7 @@ public class Control {
                     sc.next(",");
             }
             System.out.println(Control.originalTracks);
-            System.out.println(Control.originalPrioTracks);            
+            //System.out.println(Control.originalPrioTracks);            
             
         }
         

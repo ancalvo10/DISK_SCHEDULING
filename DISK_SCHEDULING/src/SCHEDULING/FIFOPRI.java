@@ -7,14 +7,13 @@ package SCHEDULING;
 
 import UTIL.Control;
 import UTIL.Prioridad;
-import java.util.Collections;
 import java.util.LinkedList;
 
 /**
  *
  * @author andre
  */
-public class PRIORIDAD {
+public class FIFOPRI {
     
     public void start(){
         LinkedList<Prioridad> recorridoPrio = new LinkedList<>();
@@ -22,12 +21,12 @@ public class PRIORIDAD {
         
         
         for(int copy = 0; copy < Control.originalPrioTracks.size(); copy++){
-            Control.prioridadTracks.add(Control.originalPrioTracks.get(copy));
+            Control.fifoPriTracks.add(Control.originalPrioTracks.get(copy));
         }
         
         int pri = 1;
         while(pri <= 5){
-            for (Prioridad prioridadTrack : Control.prioridadTracks) {
+            for (Prioridad prioridadTrack : Control.fifoPriTracks) {
                 if(prioridadTrack.getPrioridad() == pri){
                     recorridoPrio.add(prioridadTrack);
                 }
@@ -35,25 +34,25 @@ public class PRIORIDAD {
             pri++;
         }
         //Collections.reverse(recorridoPrio); 
-        Control.prioridadTracks = recorridoPrio;
+        Control.fifoPriTracks = recorridoPrio;
         
-        Control.prioridadDistancias.add(Math.abs(Control.getCabezalActual() - recorridoPrio.getFirst().getPista()));
+        Control.fifoPriDistancias.add(Math.abs(Control.getCabezalActual() - recorridoPrio.getFirst().getPista()));
         recorrido.add(Control.getCabezalActual());
-        while(Control.prioridadTracks.size() != 1){
-            Control.setCabezalActual(Control.prioridadTracks.pop().getPista());
+        while(Control.fifoPriTracks.size() != 1){
+            Control.setCabezalActual(Control.fifoPriTracks.pop().getPista());
             recorrido.add(Control.getCabezalActual());
-            Control.prioridadDistancias.add(Math.abs(Control.getCabezalActual() - recorridoPrio.getFirst().getPista()));
+            Control.fifoPriDistancias.add(Math.abs(Control.getCabezalActual() - recorridoPrio.getFirst().getPista()));
         }
         
         int contDis = 0;
-        while(contDis < Control.prioridadDistancias.size()){
-            Control.prioridadDistancia += Control.prioridadDistancias.get(contDis);
+        while(contDis < Control.fifoPriDistancias.size()){
+            Control.fifoPriDistancia += Control.fifoPriDistancias.get(contDis);
             contDis++;
         }
-        if(Control.prioridadDistancia != 0)
-            Control.prioridadPromedio = Control.prioridadDistancia/Control.originalPrioTracks.size();
+        if(Control.fifoPriDistancia != 0)
+            Control.fifoPriPromedio = Control.fifoPriDistancia/Control.originalPrioTracks.size();
         recorrido.add(recorridoPrio.removeFirst().getPista());
-        Control.prioridadTracksEstadisticas = recorrido;
+        Control.fifoPriTracksEstadisticas = recorrido;
         
     }
     
@@ -74,12 +73,13 @@ public class PRIORIDAD {
         pet.add(new Prioridad(1,90));
         pet.add(new Prioridad(3,15));
         
-        PRIORIDAD prioridad = new PRIORIDAD();
-        prioridad.start();
+        FIFOPRI fifoPri = new FIFOPRI();
+        fifoPri.start();
         
-        System.out.println(Control.prioridadTracksEstadisticas.toString());
-        System.out.println(Control.prioridadDistancias.toString());
-        System.out.println(Control.prioridadDistancia);
-        System.out.println(Control.prioridadPromedio);
+        System.out.println(Control.fifoPriTracksEstadisticas.toString());
+        System.out.println(Control.fifoPriDistancias.toString());
+        System.out.println(Control.fifoPriDistancia);
+        System.out.println(Control.fifoPriPromedio);
     } 
+    
 }

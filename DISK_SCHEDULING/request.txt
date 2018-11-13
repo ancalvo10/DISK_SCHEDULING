@@ -1,5 +1,6 @@
+#defineprocess p2 4
 #defineprocess p0 5
 #defineprocess p1 1
-#defineprocess p2 4
 #cabezalInicial 90
+#maxTracks 1000
 #tracks p0 20 , p1 30 , p0 50 , p1 35 , p2 98 , p0 110 , p1 123 , p2 15 , p2 14
