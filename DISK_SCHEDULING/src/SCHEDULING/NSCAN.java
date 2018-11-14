@@ -15,33 +15,57 @@ import java.util.LinkedList;
  */
 public class NSCAN {
     
+    
+    LinkedList<Integer> recorrido = new LinkedList<>();
+    
+    private void aux(LinkedList<Integer> nscanTracks){
+        nscanTracks.sort(Comparator.naturalOrder());
+        int contScan = 0;
+        int ex = 0;
+        while(ex < nscanTracks.size()){
+            //nscanTracks.size() < contScan
+           // try{
+                if(nscanTracks.get(contScan) < Control.getCabezalActual())
+                    contScan++;
+                ex++;
+           // }
+           // catch(Exception e){
+             //   ex++;}
+        }
+        while(nscanTracks.size() > contScan){
+            Control.nscanDistancias.add(Math.abs(Control.getCabezalActual() - nscanTracks.get(contScan)));
+            Control.setCabezalActual(nscanTracks.get(contScan));
+            recorrido.add(nscanTracks.remove(contScan));
+        }
+        nscanTracks.sort(Comparator.reverseOrder());
+        while(!nscanTracks.isEmpty()){
+            Control.nscanDistancias.add(Math.abs(Control.getCabezalActual() - nscanTracks.getFirst()));
+            Control.setCabezalActual(nscanTracks.getFirst());
+            recorrido.add(nscanTracks.removeFirst());
+        }
+    }
+    
     public void start(){
-        LinkedList<Integer> recorrido = new LinkedList<Integer>();
         Control.nscanTracks = new LinkedList<>();
         Control.nscanDistancias = new LinkedList<>();
         Control.nscanDistancia = 0;
         
+        LinkedList<Integer> recn = new LinkedList<>();
+        
         for(int copy = 0; copy < Control.originalTracks.size(); copy++){
             Control.nscanTracks.add(Control.originalTracks.get(copy));
         }
-        
-        Control.nscanTracks.sort(Comparator.naturalOrder());
-        int contScan = 0;
-        while(Control.nscanTracks.get(contScan) < Control.getCabezalActual()){
-            contScan++;
-        }
         recorrido.add(Control.getCabezalActual());
-        while(Control.nscanTracks.size() > contScan){
-            Control.nscanDistancias.add(Math.abs(Control.getCabezalActual() - Control.nscanTracks.get(contScan)));
-            Control.setCabezalActual(Control.nscanTracks.get(contScan));
-            recorrido.add(Control.nscanTracks.remove(contScan));
-        }
-        Control.nscanTracks.sort(Comparator.reverseOrder());
         while(!Control.nscanTracks.isEmpty()){
-            Control.nscanDistancias.add(Math.abs(Control.getCabezalActual() - Control.nscanTracks.getFirst()));
-            Control.setCabezalActual(Control.nscanTracks.getFirst());
-            recorrido.add(Control.nscanTracks.removeFirst());
+            //System.out.println(Control.nscanTracks.toString());
+            for(int i = 0; i < Control.originalTracks.size()/3; i++){
+                if(!Control.nscanTracks.isEmpty())
+                    recn.add(Control.nscanTracks.removeFirst());
+            }
+            aux(recn);
         }
+        
+        
         int contDis = 0;
         while(contDis < Control.nscanDistancias.size()){
             Control.nscanDistancia += Control.nscanDistancias.get(contDis);
@@ -69,6 +93,7 @@ public class NSCAN {
         pet.add(140);
         pet.add(90);
         pet.add(15);
+        //System.out.println(pet.toString());
         
         NSCAN nscan = new NSCAN();
         nscan.start();

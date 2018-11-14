@@ -16,6 +16,10 @@ public class FIFO {
     
     public void start(){
         LinkedList<Integer> recorrido = new LinkedList<Integer>();
+        Control.fifoTracks = new LinkedList<>();
+        Control.fifoDistancias = new LinkedList<>();
+        Control.fifoDistancia = 0;
+        
         
         for(int copy = 0; copy < Control.originalTracks.size(); copy++){
             Control.fifoTracks.add(Control.originalTracks.get(copy));
@@ -35,6 +39,7 @@ public class FIFO {
         }
         if(Control.fifoDistancia != 0)
             Control.fifoPromedio = Control.fifoDistancia/Control.originalTracks.size();
+        Control.setCabezalActual(Control.fifoTracks.getFirst());
         recorrido.add(Control.fifoTracks.removeFirst());
         Control.fifoTracks = recorrido;
     }

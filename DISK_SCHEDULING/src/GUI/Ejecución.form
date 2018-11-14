@@ -148,16 +148,17 @@
     <Component class="javax.swing.JComboBox" name="cboxAlgorithm">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="9">
+          <StringArray count="10">
             <StringItem index="0" value="C-SCAN"/>
             <StringItem index="1" value="FIFO"/>
-            <StringItem index="2" value="FSCAN"/>
-            <StringItem index="3" value="LIFO"/>
-            <StringItem index="4" value="N-SCAN"/>
-            <StringItem index="5" value="PRIORIDAD"/>
-            <StringItem index="6" value="RANDOM"/>
-            <StringItem index="7" value="SCAN"/>
-            <StringItem index="8" value="SSTF"/>
+            <StringItem index="2" value="FIFOPRI"/>
+            <StringItem index="3" value="FSCAN"/>
+            <StringItem index="4" value="LIFOPRI"/>
+            <StringItem index="5" value="N-SCAN"/>
+            <StringItem index="6" value="PRIORIDAD"/>
+            <StringItem index="7" value="RANDOM"/>
+            <StringItem index="8" value="SCAN"/>
+            <StringItem index="9" value="SSTF"/>
           </StringArray>
         </Property>
       </Properties>

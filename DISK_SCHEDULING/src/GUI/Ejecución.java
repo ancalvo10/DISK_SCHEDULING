@@ -104,7 +104,7 @@ public class Ejecución extends javax.swing.JFrame {
 
         jLabel1.setText("Seleccione un algoritmo:");
 
-        cboxAlgorithm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "C-SCAN", "FIFO", "FSCAN", "LIFO", "N-SCAN", "PRIORIDAD", "RANDOM", "SCAN", "SSTF" }));
+        cboxAlgorithm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "C-SCAN", "FIFO", "FIFOPRI", "FSCAN", "LIFOPRI", "N-SCAN", "PRIORIDAD", "RANDOM", "SCAN", "SSTF" }));
         cboxAlgorithm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboxAlgorithmActionPerformed(evt);
@@ -264,16 +264,22 @@ public class Ejecución extends javax.swing.JFrame {
         txtTotal.setText(Integer.toString(Control.randomDistancia));
     }
     
-    private void fillAverageLIFO(){
+    private void fillAverageLIFOPRI(){
         String average = Integer.toString(Control.lifoPriPromedio);
         txtAverage.setText(average);
         txtTotal.setText(Integer.toString(Control.lifoPriDistancia));
     }
     
-    private void fillAverageFIFO(){
+    private void fillAverageFIFOPRI(){
         String average = Integer.toString(Control.fifoPriPromedio);
         txtAverage.setText(average);
         txtTotal.setText(Integer.toString(Control.fifoPriDistancia));
+    }
+    
+    private void fillAverageFIFO(){
+        String average = Integer.toString(Control.fifoPromedio);
+        txtAverage.setText(average);
+        txtTotal.setText(Integer.toString(Control.fifoDistancia));
     }
     
     private void fillAverageCSCAN(){
@@ -384,20 +390,27 @@ public class Ejecución extends javax.swing.JFrame {
                     populateTable(Control.randomTracks, Control.randomDistancias);
                     fillAverageRANDOM();
                     break;
-                case "LIFO":
+                case "LIFOPRI":
                     Control.setCabezalActual(Control.getCabezalActual());
                     LIFOPRI lifoPri = new LIFOPRI();
                     lifoPri.start();
                     populateTable(Control.lifoPriTracksEstadisticas, Control.lifoPriDistancias);
-                    fillAverageLIFO();
+                    fillAverageLIFOPRI();
                     break;
-                case "FIFO":
+                case "FIFOPRI":
                     Control.setCabezalActual(Control.getCabezalActual());
                     FIFOPRI fifoPri = new FIFOPRI();
                     fifoPri.start();
                     populateTable(Control.fifoPriTracksEstadisticas, Control.fifoPriDistancias);
                     fillAverageFIFO();
                     break;
+                case "FIFO":
+                    Control.setCabezalActual(Control.getCabezalActual());
+                    FIFO fifo = new FIFO();
+                    fifo.start();
+                    populateTable(Control.fifoTracks, Control.fifoDistancias);
+                    fillAverageFIFO();
+                    break;    
                 default:
                     break;
             }

@@ -158,7 +158,6 @@ public class Control {
             }
             System.out.println(Control.originalTracks);
             //System.out.println(Control.originalPrioTracks);            
-            
         }
         
         catch(Exception e){
