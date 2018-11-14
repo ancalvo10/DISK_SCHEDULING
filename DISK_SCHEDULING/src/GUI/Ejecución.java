@@ -91,6 +91,8 @@ public class Ejecución extends javax.swing.JFrame {
         txtAverage = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtTotal = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         menFile = new javax.swing.JMenu();
         menAyuda = new javax.swing.JMenuItem();
@@ -137,6 +139,15 @@ public class Ejecución extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Consolas", 3, 14)); // NOI18N
         jLabel3.setText("Ejecución de algoritmos");
+
+        jLabel4.setText("Total seek length");
+
+        txtTotal.setEditable(false);
+        txtTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTotalActionPerformed(evt);
+            }
+        });
 
         menFile.setText("File");
         menFile.addActionListener(new java.awt.event.ActionListener() {
@@ -187,26 +198,25 @@ public class Ejecución extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(cboxAlgorithm, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(74, 74, 74)
-                                        .addComponent(btnCorrer)))))
-                        .addGap(0, 194, Short.MAX_VALUE))
+                                        .addComponent(btnCorrer))
+                                    .addComponent(txtAverage, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(126, 126, 126)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtAverage, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -221,11 +231,15 @@ public class Ejecución extends javax.swing.JFrame {
                     .addComponent(cboxAlgorithm, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
-                .addComponent(jLabel2)
                 .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtAverage, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(140, 140, 140))
+                .addGap(99, 99, 99))
         );
 
         pack();
@@ -234,47 +248,55 @@ public class Ejecución extends javax.swing.JFrame {
     private void fillAverageSSTF(){
         String average = Integer.toString(Control.sstfPromedio);
         txtAverage.setText(average);
+        txtTotal.setText(Integer.toString(Control.sstfDistancia));
     }
     
     private void fillAverageSCAN(){
         String average = Integer.toString(Control.scanPromedio);
         txtAverage.setText(average);
+        txtTotal.setText(Integer.toString(Control.scanDistancia));
+        
     }
     
     private void fillAverageRANDOM(){
         String average = Integer.toString(Control.randomPromedio);
         txtAverage.setText(average);
+        txtTotal.setText(Integer.toString(Control.randomDistancia));
     }
     
     private void fillAverageLIFO(){
         String average = Integer.toString(Control.lifoPriPromedio);
         txtAverage.setText(average);
+        txtTotal.setText(Integer.toString(Control.lifoPriDistancia));
     }
     
     private void fillAverageFIFO(){
         String average = Integer.toString(Control.fifoPriPromedio);
         txtAverage.setText(average);
+        txtTotal.setText(Integer.toString(Control.fifoPriDistancia));
     }
     
     private void fillAverageCSCAN(){
         String average = Integer.toString(Control.cscanPromedio);
         txtAverage.setText(average);
-               
+        txtTotal.setText(Integer.toString(Control.cscanDistancia));               
     }
     
     private void fillAverageFSCAN(){
         String average = Integer.toString(Control.fscanPromedio);
         txtAverage.setText(average);
+        txtTotal.setText(Integer.toString(Control.fscanDistancia));
     }
     
     private void fillAverageNSCAN(){
         String average = Integer.toString(Control.nscanPromedio);
         txtAverage.setText(average);
+        txtTotal.setText(Integer.toString(Control.nscanDistancia));
     }
     private void fillAveragePRIORIDAD(){
         String average = Integer.toString(Control.prioridadPromedio);
         txtAverage.setText(average);
-        
+        txtTotal.setText(Integer.toString(Control.prioridadDistancia));        
     }
     
     
@@ -421,6 +443,10 @@ public class Ejecución extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ms);
     }//GEN-LAST:event_menAyudaActionPerformed
 
+    private void txtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTotalActionPerformed
+
 
     
             
@@ -471,6 +497,7 @@ public class Ejecución extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
@@ -480,5 +507,6 @@ public class Ejecución extends javax.swing.JFrame {
     private javax.swing.JMenuItem menCompa;
     private javax.swing.JMenu menFile;
     private static javax.swing.JTextField txtAverage;
+    private static javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }
