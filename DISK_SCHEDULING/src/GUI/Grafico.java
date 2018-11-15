@@ -119,7 +119,6 @@ public class Grafico extends javax.swing.JFrame{
    
     private XYDataset createDataset() {
        
-        //Control.leerArchivo();
         //XYSeries series = new XYSeries("Secuencia de pistas visitadas");
         XYSeries series1 = new XYSeries("C-SCAN");
         XYSeries series2 = new XYSeries("FIFO");
@@ -132,7 +131,6 @@ public class Grafico extends javax.swing.JFrame{
         XYSeries series9 = new XYSeries("SSTF");
         XYSeries series10 = new XYSeries("FIFOPRI");
         XYSeries series11 = new XYSeries("LIFOPRI");
-        
         
         Integer[] CSCAN = Control.cscanTracks.toArray(new Integer[Control.cscanTracks.size()]);
         Integer[] FIFO = Control.fifoTracks.toArray(new Integer[Control.fifoTracks.size()]);
