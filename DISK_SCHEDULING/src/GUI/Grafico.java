@@ -27,6 +27,7 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.block.BlockBorder;
+import org.jfree.chart.event.ChartChangeListener;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
@@ -34,13 +35,14 @@ import org.jfree.chart.title.TextTitle;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
+import org.jfree.ui.RectangleInsets;
 
 
 /**
  *
  * @author Erin
  */
-public class Grafico extends javax.swing.JFrame {
+public class Grafico extends javax.swing.JFrame{
 
     /**
      * Creates new form Grafico
@@ -106,8 +108,6 @@ public class Grafico extends javax.swing.JFrame {
         chartPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
         chartPanel.setBackground(Color.white);
         add(chartPanel);
-//        JPanel jPanel = new JPanel();
-//        jPanel.add(chartPanel); //add the chart viewer to the JPanel
 
 
         pack();
@@ -118,8 +118,8 @@ public class Grafico extends javax.swing.JFrame {
     
    
     private XYDataset createDataset() {
-        int tiempo = 0;
-        
+       
+        //Control.leerArchivo();
         //XYSeries series = new XYSeries("Secuencia de pistas visitadas");
         XYSeries series1 = new XYSeries("C-SCAN");
         XYSeries series2 = new XYSeries("FIFO");
@@ -130,69 +130,100 @@ public class Grafico extends javax.swing.JFrame {
         XYSeries series7 = new XYSeries("RANDOM");
         XYSeries series8 = new XYSeries("SCAN");
         XYSeries series9 = new XYSeries("SSTF");
-    
-
-        Integer[] arrayCSCAN = Control.sstfTracks.toArray(new Integer[Control.sstfTracks.size()]);
-        Integer[] arrayFIFO = Control.fifoTracks.toArray(new Integer[Control.fifoTracks.size()]);
-        Integer[] arrayLIFO = Control.lifoTracks.toArray(new Integer[Control.lifoTracks.size()]);
-        Integer[] arrayFSCAN = Control.fscanTracks.toArray(new Integer[Control.fscanTracks.size()]);
-        Integer[] arrayNSCAN = Control.nscanTracks.toArray(new Integer[Control.nscanTracks.size()]);
-        Integer[] arrayPRI = Control.prioridadTracksEstadisticas.toArray(new Integer[Control.prioridadTracksEstadisticas.size()]);
-        Integer[] arrayRAM = Control.randomTracks.toArray(new Integer[Control.randomTracks.size()]);
-        Integer[] arraySCAN = Control.scanTracks.toArray(new Integer[Control.scanTracks.size()]);
-        Integer[] arraySSTF = Control.sstfTracks.toArray(new Integer[Control.sstfTracks.size()]);
+        XYSeries series10 = new XYSeries("FIFOPRI");
+        XYSeries series11 = new XYSeries("LIFOPRI");
+        
+        
+        Integer[] CSCAN = Control.cscanTracks.toArray(new Integer[Control.cscanTracks.size()]);
+        Integer[] FIFO = Control.fifoTracks.toArray(new Integer[Control.fifoTracks.size()]);
+        Integer[] LIFO = Control.lifoTracks.toArray(new Integer[Control.lifoTracks.size()]);
+        Integer[] FSCAN = Control.fscanTracks.toArray(new Integer[Control.fscanTracks.size()]);
+        Integer[] NSCAN = Control.nscanTracks.toArray(new Integer[Control.nscanTracks.size()]);
+        Integer[] PRI = Control.prioridadTracksEstadisticas.toArray(new Integer[Control.prioridadTracksEstadisticas.size()]);
+        Integer[] RAM = Control.randomTracks.toArray(new Integer[Control.randomTracks.size()]);
+        Integer[] SCAN = Control.scanTracks.toArray(new Integer[Control.scanTracks.size()]);
+        Integer[] SSTF = Control.sstfTracks.toArray(new Integer[Control.sstfTracks.size()]);
+        Integer[] FIFOPRI = Control.fifoPriTracksEstadisticas.toArray(new Integer[Control.fifoPriTracksEstadisticas.size()]);
+        Integer[] LIFOPRI = Control.lifoPriTracksEstadisticas.toArray(new Integer[Control.lifoPriTracksEstadisticas.size()]);
+        
+        Integer[] DisCSCAN = Control.cscanDistancias.toArray(new Integer[Control.cscanDistancias.size()]);
+        Integer[] DisFIFO = Control.fifoDistancias.toArray(new Integer[Control.fifoDistancias.size()]);
+        Integer[] DisLIFO = Control.lifoDistancias.toArray(new Integer[Control.lifoDistancias.size()]);
+        Integer[] DisFSCAN = Control.fscanDistancias.toArray(new Integer[Control.fscanDistancias.size()]);
+        Integer[] DisNSCAN = Control.nscanDistancias.toArray(new Integer[Control.nscanTracks.size()]);
+        Integer[] DisPRI = Control.prioridadDistancias.toArray(new Integer[Control.prioridadDistancias.size()]);
+        Integer[] DisRAM = Control.randomDistancias.toArray(new Integer[Control.randomDistancias.size()]);
+        Integer[] DisSCAN = Control.scanDistancias.toArray(new Integer[Control.scanDistancias.size()]);
+        Integer[] DisSSTF = Control.sstfDistancias.toArray(new Integer[Control.sstfDistancias.size()]);
+        Integer[] DisFIFOPRI = Control.fifoPriDistancias.toArray(new Integer[Control.fifoPriDistancias.size()]);
+        Integer[] DisLIFOPRI = Control.lifoPriDistancias.toArray(new Integer[Control.lifoPriDistancias.size()]);
       
-        for (Integer array1 : arrayCSCAN) {
-            series1.add(tiempo, array1);
-            tiempo = tiempo + 5;
+        series1.clear();
+        series2.clear();
+        series3.clear();
+        series4.clear();
+        series5.clear();
+        series6.clear();
+        series7.clear();
+        series8.clear();
+        series9.clear();
+        series10.clear();
+        series11.clear();
+        
+        for (Integer array1 : CSCAN) {
+            for (Integer arraydis1 : DisCSCAN)
+            series1.add(arraydis1, array1);
         }
-        tiempo = 0;
-        for (Integer array2 : arrayFIFO) {
-            //tiempo = 0;
-            series2.add(tiempo, array2);
-            tiempo = tiempo + 5;
+        
+        for (Integer array2 : FIFO) {
+            for (Integer arraydis2 : DisFIFO)
+            series2.add(arraydis2, array2);
         }
-        tiempo = 0;
-        for (Integer array3 : arrayLIFO) {
-            //tiempo = 0;
-            series3.add(tiempo, array3);
-            tiempo = tiempo + 5;
+       
+        for (Integer array3 : LIFO) {
+            for (Integer arraydis3 : DisLIFO)
+            series3.add(arraydis3, array3);
         }
-        tiempo = 0;
-        for (Integer array4 : arrayFSCAN) {
-            //
-            series4.add(tiempo, array4);
-            tiempo = tiempo + 5;
+        
+        for (Integer array4 : FSCAN) {
+            for (Integer arraydis4 : DisFSCAN)
+            series4.add(arraydis4, array4);
         }
-        tiempo = 0;
-        for (Integer array5 : arrayNSCAN) {
-            //
-            series5.add(tiempo, array5);
-            tiempo = tiempo + 5;
+  
+        for (Integer array5 : NSCAN) {
+            for (Integer arraydis5 : DisNSCAN)
+            series5.add(arraydis5, array5);
         }
-        tiempo = 0;
-        for (Integer array6 : arrayPRI) {
-            //tiempo = 0;
-            series6.add(tiempo, array6);
-            tiempo = tiempo + 5;
+    
+        for (Integer array6 : PRI) {
+            for (Integer arraydis6 : DisPRI)
+            series6.add(arraydis6, array6);
         }
-        tiempo = 0;
-        for (Integer array7 : arrayRAM) {
-            
-            series7.add(tiempo, array7);
-            tiempo = tiempo + 5;
+
+        for (Integer array7 : RAM) {
+            for (Integer arraydis7 : DisRAM)
+            series7.add(arraydis7, array7);
         }
-        tiempo = 0;
-        for (Integer array8 : arraySCAN) {
-            
-            series8.add(tiempo, array8);
-            tiempo = tiempo + 5;
+
+        for (Integer array8 : SCAN) {
+            for (Integer arraydis8 : DisSCAN)
+            series8.add(arraydis8, array8);
         }
-        tiempo = 0;
-        for (Integer array9 : arraySSTF) {
-            
-            series9.add(tiempo, array9);
-            tiempo = tiempo + 5;
+
+        for (Integer array9 : SSTF) {
+            for (Integer arraydis9 : DisSSTF)
+            series9.add(arraydis9, array9);
+        }
+        
+        for (Integer array10 : FIFOPRI) {
+            for (Integer arraydis10 : DisFIFOPRI)
+            series10.add(arraydis10, array10);
+        }
+        
+        for (Integer array11 : LIFOPRI) {
+            for (Integer arraydis11 : DisLIFOPRI)
+            series11.add(arraydis11, array11);
+           
         }
        
         XYSeriesCollection dataset = new XYSeriesCollection();
@@ -206,6 +237,8 @@ public class Grafico extends javax.swing.JFrame {
         dataset.addSeries(series7);
         dataset.addSeries(series8);
         dataset.addSeries(series9);
+        dataset.addSeries(series10);
+        dataset.addSeries(series11);
 
         return dataset;
     }
@@ -223,17 +256,17 @@ public class Grafico extends javax.swing.JFrame {
                 true, 
                 false 
         );
-      
         
-        XYPlot plot = chart.getXYPlot();
-
         chart.getXYPlot().setDataset(chart.getXYPlot().getDataset());
+        XYPlot plot = chart.getXYPlot();
+        
     
         XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
         renderer.setSeriesPaint(0, Color.RED);
         renderer.setSeriesStroke(0, new BasicStroke(2.0f));
         
         // sets paint color for plot outlines
+      
         plot.setOutlinePaint(Color.BLACK);
         plot.setOutlineStroke(new BasicStroke(2.0f));
 
@@ -251,6 +284,7 @@ public class Grafico extends javax.swing.JFrame {
 
         chart.setTitle(new TextTitle("Disk Scheduling Algorithms",
                         new Font("Serif", java.awt.Font.BOLD, 18)));
+       
              
         return chart;
         
@@ -264,11 +298,12 @@ public class Grafico extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
                 
-        Control.leerArchivo();
+     
         
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+               // Control.leerArchivo();
                 new Grafico().setVisible(true);
             }
         });
