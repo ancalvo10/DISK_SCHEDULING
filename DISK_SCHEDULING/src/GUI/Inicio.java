@@ -43,6 +43,7 @@ public class Inicio extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         menFile = new javax.swing.JMenu();
         menAyuda = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -99,6 +100,14 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         menFile.add(menAyuda);
+
+        jMenuItem3.setText("Algoritmos");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        menFile.add(jMenuItem3);
 
         jMenuBar1.add(menFile);
 
@@ -213,6 +222,10 @@ public class Inicio extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ms);
     }//GEN-LAST:event_menAyudaActionPerformed
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -261,6 +274,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem menAyuda;
     private javax.swing.JMenu menFile;
     // End of variables declaration//GEN-END:variables

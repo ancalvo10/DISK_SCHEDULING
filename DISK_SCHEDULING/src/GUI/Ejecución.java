@@ -293,7 +293,7 @@ public class Ejecución extends javax.swing.JFrame {
         for(int i=a; i>=0; i--){
         model.removeRow(i );
         }
-        Control.leerArchivo();
+        //Control.leerArchivo();
         
         if (null == algoritmo) {
         } else {

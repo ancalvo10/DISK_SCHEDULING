@@ -17,6 +17,7 @@ import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.Arrays;
 import java.util.LinkedList;
 import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
@@ -145,6 +146,7 @@ public class Grafico extends javax.swing.JFrame{
         Integer[] LIFOPRI = Control.lifoPriTracksEstadisticas.toArray(new Integer[Control.lifoPriTracksEstadisticas.size()]);
         
         Integer[] DisCSCAN = Control.cscanDistancias.toArray(new Integer[Control.cscanDistancias.size()]);
+        System.out.println(Arrays.toString(DisCSCAN));
         Integer[] DisFIFO = Control.fifoDistancias.toArray(new Integer[Control.fifoDistancias.size()]);
         Integer[] DisLIFO = Control.lifoDistancias.toArray(new Integer[Control.lifoDistancias.size()]);
         Integer[] DisFSCAN = Control.fscanDistancias.toArray(new Integer[Control.fscanDistancias.size()]);
@@ -168,9 +170,13 @@ public class Grafico extends javax.swing.JFrame{
         series10.clear();
         series11.clear();
         
-        for (Integer array1 : CSCAN) {
+        /*for (Integer array1 : CSCAN) {
             for (Integer arraydis1 : DisCSCAN)
             series1.add(arraydis1, array1);
+        }*/
+        series1.add((Integer) 0, CSCAN[0]);
+        for (int i = 0; i < DisCSCAN.length; i++){
+            series1.add(DisCSCAN[i], CSCAN[i+1]);
         }
         
         for (Integer array2 : FIFO) {
