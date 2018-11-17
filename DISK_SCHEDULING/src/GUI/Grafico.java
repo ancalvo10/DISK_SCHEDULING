@@ -179,56 +179,56 @@ public class Grafico extends javax.swing.JFrame{
             series1.add(DisCSCAN[i], CSCAN[i+1]);
         }
         
-        for (Integer array2 : FIFO) {
-            for (Integer arraydis2 : DisFIFO)
-            series2.add(arraydis2, array2);
+        series2.add((Integer) 0, FIFO[0]);
+        for (int i =0; i < DisFIFO.length; i++) {
+            series2.add(DisFIFO[i], FIFO[i+1]);  
+        }
+        
+        series3.add((Integer) 0, LIFO[0]);
+        for (int i =0; i < DisLIFO.length; i++) {
+            series3.add(DisLIFO[i], LIFO[i+1]);  
         }
        
-        for (Integer array3 : LIFO) {
-            for (Integer arraydis3 : DisLIFO)
-            series3.add(arraydis3, array3);
+        series4.add((Integer) 0, FSCAN[0]);
+        for (int i =0; i < DisFSCAN.length; i++) {
+            series4.add(DisFSCAN[i], FSCAN[i+1]);  
         }
         
-        for (Integer array4 : FSCAN) {
-            for (Integer arraydis4 : DisFSCAN)
-            series4.add(arraydis4, array4);
-        }
-  
-        for (Integer array5 : NSCAN) {
-            for (Integer arraydis5 : DisNSCAN)
-            series5.add(arraydis5, array5);
-        }
-    
-        for (Integer array6 : PRI) {
-            for (Integer arraydis6 : DisPRI)
-            series6.add(arraydis6, array6);
-        }
-
-        for (Integer array7 : RAM) {
-            for (Integer arraydis7 : DisRAM)
-            series7.add(arraydis7, array7);
-        }
-
-        for (Integer array8 : SCAN) {
-            for (Integer arraydis8 : DisSCAN)
-            series8.add(arraydis8, array8);
-        }
-
-        for (Integer array9 : SSTF) {
-            for (Integer arraydis9 : DisSSTF)
-            series9.add(arraydis9, array9);
+        series5.add((Integer) 0, NSCAN[0]);
+        for (int i =0; i < DisNSCAN.length; i++) {
+            series5.add(DisNSCAN[i], NSCAN[i+1]);  
         }
         
-        for (Integer array10 : FIFOPRI) {
-            for (Integer arraydis10 : DisFIFOPRI)
-            series10.add(arraydis10, array10);
+        series6.add((Integer) 0, PRI[0]);
+        for (int i =0; i < DisPRI.length; i++) {
+            series6.add(DisPRI[i], PRI[i+1]);  
+        }
+      
+        series7.add((Integer) 0, RAM[0]);
+        for (int i =0; i < DisRAM.length; i++) {
+            series7.add(DisRAM[i], RAM[i+1]);  
+        }
+       
+        series8.add((Integer) 0, SCAN[0]);
+        for (int i =0; i < DisSCAN.length; i++) {
+            series8.add(DisSCAN[i], SCAN[i+1]);  
+        }
+
+        series9.add((Integer) 0, SSTF[0]);
+        for (int i =0; i < DisSSTF.length; i++) {
+            series9.add(DisSSTF[i], SSTF[i+1]);  
+        }
+
+        series10.add((Integer) 0, FIFOPRI[0]);
+        for (int i =0; i < DisFIFOPRI.length; i++) {
+            series10.add(DisFIFOPRI[i], FIFOPRI[i+1]);  
         }
         
-        for (Integer array11 : LIFOPRI) {
-            for (Integer arraydis11 : DisLIFOPRI)
-            series11.add(arraydis11, array11);
-           
+        series11.add((Integer) 0, LIFOPRI[0]);
+        for (int i =0; i < DisLIFOPRI.length; i++) {
+            series11.add(DisLIFOPRI[i], LIFOPRI[i+1]);  
         }
+       
        
         XYSeriesCollection dataset = new XYSeriesCollection();
         //dataset.addSeries(series);

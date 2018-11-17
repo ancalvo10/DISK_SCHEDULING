@@ -387,8 +387,7 @@ public class Ejecución extends javax.swing.JFrame {
             }
         }
         
-        Grafico ventanaGrafico = new Grafico();
-        ventanaGrafico.setVisible(true);
+        
     }//GEN-LAST:event_btnCorrerActionPerformed
 
     private void txtAverageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAverageActionPerformed
